@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context=".Crafts.CraftActivity">
+
+    <ImageView
+        android:id="@+id/add_text"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:src="@drawable/add"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        />
+    <EditText
+        android:id="@+id/craft_input_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/input_design"
+        android:layout_below="@+id/add_text"
+        android:padding="10dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginTop="40dp"
+        android:hint="Craft ID"
+        android:inputType="text"
+        android:textColor="@color/colorPrimaryDark"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        />
+
+    <EditText
+        android:id="@+id/craft_input_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/input_design"
+        android:layout_below="@+id/craft_input_id"
+        android:padding="10dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginTop="20dp"
+        android:hint="Craft Name"
+        android:inputType="text"
+        android:textColor="@color/colorPrimaryDark"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        />
+
+
+
+    <EditText
+        android:id="@+id/craft_input_stock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/input_design"
+        android:layout_below="@+id/craft_input_name"
+        android:padding="10dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginTop="20dp"
+        android:hint="Stock In"
+        android:inputType="text"
+        android:textColor="@color/colorPrimaryDark"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        />
+
+    <EditText
+        android:id="@+id/craft_input_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/input_design"
+        android:layout_below="@+id/craft_input_stock"
+        android:padding="10dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginTop="20dp"
+        android:hint="Unit Price"
+        android:inputType="text"
+        android:textColor="@color/colorPrimaryDark"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        />
+
+    <Button
+        android:id="@+id/craft_search_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/craft_input_price"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:background="@drawable/buttons"
+        android:padding="10dp"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:text="Search"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="10dp"
+        />
+
+    <Button
+        android:id="@+id/craft_add_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/craft_search_button"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:background="@drawable/buttons"
+        android:padding="10dp"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:text="Add"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="10dp"
+        />
+    <Button
+        android:id="@+id/craft_edit_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/craft_add_button"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:background="@drawable/buttons"
+        android:padding="10dp"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:text="Edit"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="10dp"
+        />
+
+    <Button
+        android:id="@+id/craft_delete_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/craft_edit_button"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:background="@drawable/buttons"
+        android:padding="10dp"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:text="Delete"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="10dp"
+        />
+
+</RelativeLayout>
