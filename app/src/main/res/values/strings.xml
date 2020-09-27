@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">craftcreatures</string>
+    <string name="app_name">craft creatures</string>
+    <string name="enter_name">Enter Name</string>
+    <string name="enter_number_">Enter Number</string>
+    <string name="enter_number">Enter Contact Number</string>
+    <string name="jobtitle">Job Title</string>
+    <string name="salary">Enter Basic Salary</string>
+    <string name="email">Enter Email</string>
 </resources>
