@@ -20,14 +20,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
-
-
-
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("CREATE TABLE  Delivery (DID Integer PRIMARY KEY AUTOINCREMENT,DItemName text,DItemAmount text,CName text,CAddress text,CPhone text);");
+        sqLiteDatabase.execSQL("CREATE TABLE Delivery (DID Integer PRIMARY KEY AUTOINCREMENT,DItemName text,DItemAmount text,CName text,CAddress text,CPhone text);");
     }
 
     @Override
@@ -53,6 +50,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Cursor getAllData(){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+
         Cursor res = sqLiteDatabase.rawQuery("SELECT * FROM "+ TABLE_NAME,null);
         return res;
     }

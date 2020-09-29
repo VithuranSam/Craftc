@@ -18,7 +18,7 @@ import com.squadron.craftcreatures.R;
 public class DeliveryActivity extends AppCompatActivity {
     DatabaseHelper myDb;
     EditText cr_name,amount,cname,c_address,c_phone,delivery_id;
-    Button craft_add,craft_view,craft_edit,craft_delete;
+    Button delivery_add,delivery_view,delivery_edit,delivery_delete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +35,11 @@ public class DeliveryActivity extends AppCompatActivity {
 
         delivery_id = (EditText)findViewById(R.id.delivery_input_id);// Lately Add
 
-        craft_add = (Button)findViewById((R.id.delivery_add_button));
-        craft_edit = (Button)findViewById((R.id.delivery_edit_button));
-        craft_delete = (Button)findViewById((R.id.delivery_delete_button));
+        delivery_add = (Button)findViewById((R.id.delivery_add_button));
+        delivery_edit = (Button)findViewById((R.id.delivery_edit_button));
+        delivery_delete = (Button)findViewById((R.id.delivery_delete_button));
 
-        craft_view = (Button)findViewById((R.id.delivery_view_button));
+        delivery_view = (Button)findViewById((R.id.delivery_view_button));
         AddData();
         ViewAll();
         UpdateData();
@@ -50,7 +50,7 @@ public class DeliveryActivity extends AppCompatActivity {
 
     }
     public  void AddData(){
-        craft_add.setOnClickListener(new View.OnClickListener() {
+        delivery_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 boolean isInserted = myDb.insertData(cr_name.getText().toString(), amount.getText().toString(),cname.getText().toString(),c_address.getText().toString(),c_phone.getText().toString());
@@ -65,7 +65,7 @@ public class DeliveryActivity extends AppCompatActivity {
     }
 
     public void ViewAll(){
-        craft_view.setOnClickListener(new View.OnClickListener() {
+        delivery_view.setOnClickListener(new View.OnClickListener() {
                                           @Override
                                           public void onClick(View v) {
                                               Cursor res = myDb.getAllData();
@@ -98,7 +98,7 @@ public class DeliveryActivity extends AppCompatActivity {
     }
 
     public void UpdateData(){
-        craft_edit.setOnClickListener(new View.OnClickListener() {
+        delivery_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 boolean isUpdate = myDb.updateData(delivery_id.getText().toString(),cr_name.getText().toString(),amount.getText().toString(),cname.getText().toString(),c_address.getText().toString(),c_phone.getText().toString());
@@ -113,7 +113,7 @@ public class DeliveryActivity extends AppCompatActivity {
     }
 
     public void DeleteData(){
-        craft_delete.setOnClickListener(new View.OnClickListener() {
+        delivery_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Integer deletedRows = myDb.deleteData(delivery_id.getText().toString());
