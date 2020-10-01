@@ -132,13 +132,12 @@ public class empAdapter extends RecyclerView.Adapter<empViewHolder> implements F
         if(emp != null){
             nameField.setText(emp.getName());
             jobField.setText(String.valueOf(emp.getJobtitle()));
-            jobField.setText(String.valueOf(emp.getSalary()));
+            salaryField.setText(String.valueOf(emp.getSalary()));
             phoneField.setText(String.valueOf(emp.getPhno()));
             emailField.setText(String.valueOf(emp.getEmail()));
         }
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("Edit emp");
         builder.setView(subView);
         builder.create();
 

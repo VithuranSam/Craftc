@@ -1,4 +1,4 @@
-package com.squadron.craftcreatures;
+package com.squadron.craftcreatures.Crafts;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,11 +6,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import androidx.annotation.Nullable;
+
 
 public class DatabaseHelperCraft extends SQLiteOpenHelper {
-    public static final String DATABASE_NAME = "craftcreatures.db";
-    public static final String TABLE_NAME = "CraftS";
+    public static final String DATABASE_NAME = "craftcreatures_1.db";
+    public static final String TABLE_NAME = "Craft_S";
     public static final String COL_1 = "CID";
     public static final String COL_2 = "CraftName";
     public static final String COL_3 = "CraftPrice";
@@ -21,11 +21,12 @@ public class DatabaseHelperCraft extends SQLiteOpenHelper {
 
     public DatabaseHelperCraft(Context context) {
         super(context, DATABASE_NAME, null, 1);
+
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("create table " + TABLE_NAME +" (CID Integer PRIMARY KEY AUTOINCREMENT,CraftName text,CraftPrice text,CraftStock text,CraftCategory text,CraftDes text);");
+        sqLiteDatabase.execSQL("create table " + TABLE_NAME + " (CID Integer PRIMARY KEY AUTOINCREMENT,CraftName text,CraftPrice text,CraftStock text,CraftCategory text,CraftDes text);");
     }
 
     @Override
@@ -72,4 +73,5 @@ public class DatabaseHelperCraft extends SQLiteOpenHelper {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         return sqLiteDatabase.delete(TABLE_NAME,"CID = ?",new String[]{ crid });
     }
+
 }

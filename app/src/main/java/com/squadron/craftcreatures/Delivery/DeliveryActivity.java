@@ -9,16 +9,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.squadron.craftcreatures.DatabaseHelper;
 import com.squadron.craftcreatures.R;
 
 
 public class DeliveryActivity extends AppCompatActivity {
     DatabaseHelper myDb;
     EditText cr_name,amount,cname,c_address,c_phone,delivery_id;
-    Button delivery_add,delivery_view,delivery_edit,delivery_delete;
+    LinearLayout delivery_add,delivery_edit,delivery_delete;
+    Button delivery_view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +36,9 @@ public class DeliveryActivity extends AppCompatActivity {
 
         delivery_id = (EditText)findViewById(R.id.delivery_input_id);// Lately Add
 
-        delivery_add = (Button)findViewById((R.id.delivery_add_button));
-        delivery_edit = (Button)findViewById((R.id.delivery_edit_button));
-        delivery_delete = (Button)findViewById((R.id.delivery_delete_button));
+        delivery_add = (LinearLayout)findViewById((R.id.delivery_add_button));
+        delivery_edit = (LinearLayout)findViewById((R.id.delivery_edit_button));
+        delivery_delete = (LinearLayout)findViewById((R.id.delivery_delete_button));
 
         delivery_view = (Button)findViewById((R.id.delivery_view_button));
         AddData();
