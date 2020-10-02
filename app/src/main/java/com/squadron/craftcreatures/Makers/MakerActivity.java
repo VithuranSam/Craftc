@@ -2,6 +2,8 @@ package com.squadron.craftcreatures.Makers;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 
+import com.squadron.craftcreatures.Crafts.CraftActivity;
 import com.squadron.craftcreatures.R;
 
 public class MakerActivity extends AppCompatActivity {
@@ -32,13 +35,18 @@ public class MakerActivity extends AppCompatActivity {
         buying_price = (EditText)findViewById(R.id.maker_input_buying_price);
 
         maker_id = (EditText)findViewById(R.id.maker_input_id);
+
         maker_add = (LinearLayout)findViewById((R.id.maker_add_button));
         maker_edit = (LinearLayout)findViewById((R.id.maker_edit_button));
         maker_delete = (LinearLayout)findViewById((R.id.maker_delete_button));
 
-        maker_view = (Button)findViewById((R.id.delivery_view_button));
+        maker_view = (Button)findViewById((R.id.maker_view_button));
 
         AddData();
+        ViewAll();
+        UpdateData();
+        DeleteData();
+
     }
 
     public void AddData() {
@@ -57,4 +65,72 @@ public class MakerActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void ViewAll() {
+
+        maker_view.setOnClickListener(new View.OnClickListener() {
+                                          @Override
+                                          public void onClick(View v) {
+                                              Cursor res = myDb.getAllData();
+                                              if (res.getCount() == 0) {
+                                                  //Show Message
+                                                  showMessage("Error ", "Nothing Found");
+                                                  return;
+                                              }
+                                              StringBuffer stringBuffer = new StringBuffer();
+                                              while (res.moveToNext()) {
+                                                  stringBuffer.append("Makers / Company ID : " + res.getString(0) + "\n");
+                                                  stringBuffer.append("Makers / Company Name : " + res.getString(1) + "\n");
+                                                  stringBuffer.append("Email Address : " + res.getString(2) + "\n");
+                                                  stringBuffer.append("Phone No : " + res.getString(3) + "\n");
+                                                  stringBuffer.append("Craft Quantity: " + res.getString(4) + "\n");
+                                                  stringBuffer.append("Craft Unit Price : " + res.getString(5) + "\n\n");
+                                                  stringBuffer.append("Craft Buying Price : " + res.getString(6) + "\n\n");
+                                              }
+                                              showMessage("Data", stringBuffer.toString());
+                                          }
+                                      }
+        );
+    }
+
+    public void showMessage(String title, String Message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setTitle(title);
+        builder.setMessage(Message);
+        builder.show();
+    }
+
+    public void UpdateData() {
+
+        maker_edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean isUpdate = myDb.updateData(maker_id.getText().toString(), maker_name.getText().toString(), maker_email.getText().toString(), maker_phone.getText().toString(), quantity.getText().toString(), unit_price.getText().toString(), buying_price.getText().toString() );
+                if (isUpdate == true) {
+                    Toast.makeText(MakerActivity.this, "Data Updated", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MakerActivity.this, "Data not Updated", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    public void DeleteData() {
+
+        maker_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Integer deletedRows = myDb.deleteData(maker_id.getText().toString());
+                if (deletedRows > 0) {
+                    Toast.makeText(MakerActivity.this, "Data Deleted", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MakerActivity.this, "Data not Deleted", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
+    }
+
 }

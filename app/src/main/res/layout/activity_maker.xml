@@ -11,7 +11,7 @@
         android:id="@+id/add_text"
         android:layout_width="350dp"
         android:layout_height="60dp"
-        android:src="@drawable/addcrf"
+        android:src="@drawable/addmak"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
         />
@@ -156,7 +156,7 @@
             android:id="@+id/maker_add_button"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/add1"
+            android:background="@drawable/add2"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="60dp"
             android:orientation="vertical"/>
@@ -166,13 +166,13 @@
             android:layout_height="50dp"
             android:padding="1dp"
             android:gravity="center"
-            android:background="@drawable/edit1"
+            android:background="@drawable/edit2"
             android:orientation="vertical"/>
         <LinearLayout
             android:id="@+id/maker_delete_button"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/delete1"
+            android:background="@drawable/delete2"
             android:layout_marginLeft="60dp"
             android:layout_marginRight="20dp"
             android:orientation="vertical"/>
