@@ -11,11 +11,14 @@ import android.widget.LinearLayout;
 import com.squadron.craftcreatures.Crafts.CraftActivity;
 import com.squadron.craftcreatures.Delivery.DeliveryActivity;
 import com.squadron.craftcreatures.Employee.EmployeeActivity;
+import com.squadron.craftcreatures.Makers.MakerActivity;
 
 public class Admin extends AppCompatActivity {
     LinearLayout employee;
     LinearLayout crafts;
     LinearLayout delivery;
+    LinearLayout maker;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,15 @@ public class Admin extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), DeliveryActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        maker = (LinearLayout) findViewById(R.id.makers_layout);
+        maker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MakerActivity.class);
                 startActivity(intent);
             }
         });
