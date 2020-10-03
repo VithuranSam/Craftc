@@ -13,7 +13,7 @@
         android:layout_height="60dp"
         android:src="@drawable/addcrf"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="30dp"
         />
     <EditText
         android:id="@+id/craft_input_crname"
@@ -24,7 +24,7 @@
         android:padding="10dp"
         android:layout_marginLeft="60dp"
         android:layout_marginRight="60dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:hint="Craft Name"
         android:inputType="text"
         android:textColor="@color/colorBlack"
@@ -34,7 +34,7 @@
         />
 
     <EditText
-        android:id="@+id/craft_input_price"
+        android:id="@+id/craft_input_actual_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/input_design_black"
@@ -43,7 +43,7 @@
         android:layout_marginLeft="60dp"
         android:layout_marginRight="60dp"
         android:layout_marginTop="10dp"
-        android:hint="Price"
+        android:hint="Actual Price"
         android:inputType="text"
         android:textColor="@color/colorBlack"
         android:textColorHint="@color/colorBlack"
@@ -51,14 +51,98 @@
         android:textStyle="normal"
         />
 
+    <EditText
+        android:id="@+id/craft_input_selling_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/input_design_black"
+        android:layout_below="@+id/craft_input_actual_price"
+        android:padding="10dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginTop="10dp"
+        android:hint="Selling Price"
+        android:inputType="text"
+        android:textColor="@color/colorBlack"
+        android:textColorHint="@color/colorBlack"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        />
 
+<!--    <EditText-->
+<!--        android:id="@+id/craft_input_profit"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@drawable/input_design_black"-->
+<!--        android:layout_below="@+id/craft_input_selling_price"-->
+<!--        android:padding="10dp"-->
+<!--        android:layout_marginLeft="60dp"-->
+<!--        android:layout_marginRight="60dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:hint="Profit"-->
+<!--        android:inputType="text"-->
+<!--        android:textColor="@color/colorBlack"-->
+<!--        android:textColorHint="@color/colorBlack"-->
+<!--        android:textSize="18sp"-->
+<!--        android:textStyle="normal"-->
+<!--        />-->
+
+    <LinearLayout
+        android:id="@+id/layout_two"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:gravity="center"
+        android:layout_below="@+id/craft_input_selling_price"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_marginRight="40dp"
+            android:layout_height="50dp"
+            android:padding="1dp"
+            android:gravity="center"
+            android:orientation="vertical">
+            <EditText
+                android:id="@+id/craft_input_profit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input_design_black"
+                android:layout_below="@+id/maker_input_unit_price"
+                android:padding="10dp"
+                android:hint="Profit"
+                android:inputType="number"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/colorBlack"
+                android:textSize="18sp"
+                android:textStyle="normal"
+                android:orientation="vertical"
+                />
+        </LinearLayout>>
+        <LinearLayout
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="1dp"
+            android:gravity="center"
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/craft_cal_profit"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@drawable/cal1"
+                android:width="50dp"
+                android:height="50dp"
+                />
+        </LinearLayout>>
+    </LinearLayout>>
 
     <EditText
         android:id="@+id/craft_input_stock"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/input_design_black"
-        android:layout_below="@+id/craft_input_price"
+        android:layout_below="@+id/layout_two"
         android:padding="10dp"
         android:layout_marginLeft="60dp"
         android:layout_marginRight="60dp"
@@ -106,24 +190,71 @@
         android:textStyle="normal"
         />
 
-    <EditText
-        android:id="@+id/craft_input_id"
+<!--    <EditText-->
+<!--        android:id="@+id/craft_input_id"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@drawable/input_design_black"-->
+<!--        android:layout_below="@+id/craft_input_description"-->
+<!--        android:padding="10dp"-->
+<!--        android:layout_marginLeft="60dp"-->
+<!--        android:layout_marginRight="60dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:hint="Input ID and Edit/Delete"-->
+<!--        android:inputType="text"-->
+<!--        android:textColor="@color/colorBlack"-->
+<!--        android:textColorHint="@color/colorBlack"-->
+<!--        android:textSize="18sp"-->
+<!--        android:textStyle="normal"-->
+<!--        />-->
+
+    <LinearLayout
+        android:id="@+id/layout_three"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/input_design_black"
+        android:clipToPadding="false"
+        android:gravity="center"
         android:layout_below="@+id/craft_input_description"
-        android:padding="10dp"
-        android:layout_marginLeft="60dp"
-        android:layout_marginRight="60dp"
-        android:layout_marginTop="20dp"
-        android:hint="Input ID and Edit/Delete"
-        android:inputType="text"
-        android:textColor="@color/colorBlack"
-        android:textColorHint="@color/colorBlack"
-        android:textSize="18sp"
-        android:textStyle="normal"
-        />
-
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_marginRight="40dp"
+            android:layout_height="50dp"
+            android:padding="1dp"
+            android:gravity="center"
+            android:orientation="vertical">
+            <EditText
+                android:id="@+id/craft_input_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input_design_black"
+                android:padding="10dp"
+                android:hint="Input ID"
+                android:inputType="text"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/colorBlack"
+                android:textSize="18sp"
+                android:textStyle="normal"
+                />
+        </LinearLayout>>
+        <LinearLayout
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="1dp"
+            android:gravity="center"
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/craft_search_view"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@drawable/search1"
+                android:width="50dp"
+                android:height="50dp"
+                />
+        </LinearLayout>>
+    </LinearLayout>>
 
     <LinearLayout
         android:id="@+id/layout_one"
@@ -131,7 +262,7 @@
         android:layout_height="wrap_content"
         android:clipToPadding="false"
         android:gravity="center"
-        android:layout_below="@+id/craft_input_id"
+        android:layout_below="@+id/layout_three"
         android:layout_marginTop="40dp"
         android:orientation="horizontal">
         <LinearLayout

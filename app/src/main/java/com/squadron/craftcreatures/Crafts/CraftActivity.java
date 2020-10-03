@@ -18,9 +18,9 @@ import com.squadron.craftcreatures.R;
 
 public class CraftActivity extends AppCompatActivity {
     DatabaseHelperCraft myDb;
-    EditText cr_name, cr_price, cr_stock, cr_category, cr_description, craft_id;
+    EditText cr_name, cr_actual_price,cr_selling_price,profit, cr_stock, cr_category, cr_description, craft_id;
     LinearLayout craft_add, craft_edit, craft_delete;
-    Button craft_view;
+    Button craft_view,cal_craft,search;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,9 @@ public class CraftActivity extends AppCompatActivity {
 
         craft_id = (EditText) findViewById(R.id.craft_input_id);
         cr_name = (EditText) findViewById(R.id.craft_input_crname);
-        cr_price = (EditText) findViewById(R.id.craft_input_price);
+        cr_actual_price = (EditText) findViewById(R.id.craft_input_actual_price);
+        cr_selling_price = (EditText) findViewById(R.id.craft_input_selling_price);
+        profit = (EditText) findViewById(R.id.craft_input_profit);
         cr_stock = (EditText) findViewById(R.id.craft_input_stock);
         cr_category = (EditText) findViewById(R.id.craft_input_category);
         cr_description = (EditText) findViewById(R.id.craft_input_description);
@@ -39,12 +41,37 @@ public class CraftActivity extends AppCompatActivity {
         craft_view = (Button) findViewById((R.id.craft_view_button));
         craft_edit = (LinearLayout) findViewById((R.id.craft_edit_button));
         craft_delete = (LinearLayout) findViewById((R.id.craft_delete_button));
-
+        cal_craft = (Button) findViewById((R.id.craft_cal_profit));
+        search = (Button) findViewById((R.id.craft_search_view));
 
         AddData();
         ViewAll();
         UpdateData();
         DeleteData();
+
+        cal_craft.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (cr_actual_price.getText().toString().length() == 0 ){
+                    cr_actual_price.setText("0");
+                }
+
+                if (cr_selling_price.getText().toString().length() == 0 ){
+                    cr_selling_price.setText("0");
+                }
+                profit.setText(String.valueOf(calculate()));
+            }
+
+
+        });
+    }
+
+    public int calculate() {
+        int actualPrice = Integer.parseInt(cr_actual_price.getText().toString());
+        int sellingPrice = Integer.parseInt(cr_selling_price.getText().toString());
+
+        int profit = sellingPrice - actualPrice;
+        return profit;
     }
 
 
@@ -53,7 +80,7 @@ public class CraftActivity extends AppCompatActivity {
         craft_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean isInserted = myDb.insertData(cr_name.getText().toString(), cr_price.getText().toString(), cr_stock.getText().toString(), cr_category.getText().toString(), cr_description.getText().toString());
+                boolean isInserted = myDb.insertData(cr_name.getText().toString(), cr_actual_price.getText().toString(),cr_selling_price.getText().toString(),profit.getText().toString(), cr_stock.getText().toString(), cr_category.getText().toString(), cr_description.getText().toString());
                 if (isInserted == true) {
                     Toast.makeText(CraftActivity.this, "Data Inserted", Toast.LENGTH_SHORT).show();
                     clearControls();
@@ -79,10 +106,12 @@ public class CraftActivity extends AppCompatActivity {
                                               while (res.moveToNext()) {
                                                   stringBuffer.append("Craft ID : " + res.getString(0) + "\n");
                                                   stringBuffer.append("Craft Name : " + res.getString(1) + "\n");
-                                                  stringBuffer.append("Craft Price : " + res.getString(2) + "\n");
-                                                  stringBuffer.append("Craft Stock : " + res.getString(3) + "\n");
-                                                  stringBuffer.append("Craft Category: " + res.getString(4) + "\n");
-                                                  stringBuffer.append("Craft Description : " + res.getString(5) + "\n\n");
+                                                  stringBuffer.append("Craft Actual Price : " + res.getString(2) + "\n");
+                                                  stringBuffer.append("Craft Selling Price : " + res.getString(3) + "\n");
+                                                  stringBuffer.append("Profit : " + res.getString(4) + "\n");
+                                                  stringBuffer.append("Craft Stock : " + res.getString(5) + "\n");
+                                                  stringBuffer.append("Craft Category: " + res.getString(6) + "\n");
+                                                  stringBuffer.append("Craft Description : " + res.getString(7) + "\n\n");
                                               }
                                               showMessage("Data", stringBuffer.toString());
                                           }
@@ -103,7 +132,7 @@ public class CraftActivity extends AppCompatActivity {
         craft_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean isUpdate = myDb.updateData(craft_id.getText().toString(), cr_name.getText().toString(), cr_price.getText().toString(), cr_stock.getText().toString(), cr_category.getText().toString(), cr_description.getText().toString());
+                boolean isUpdate = myDb.updateData(craft_id.getText().toString(), cr_name.getText().toString(), cr_actual_price.getText().toString(),cr_selling_price.getText().toString(),profit.getText().toString(), cr_stock.getText().toString(), cr_category.getText().toString(), cr_description.getText().toString());
                 if (isUpdate == true) {
                     Toast.makeText(CraftActivity.this, "Data Updated", Toast.LENGTH_SHORT).show();
                     clearControls();
@@ -134,7 +163,8 @@ public class CraftActivity extends AppCompatActivity {
     private void clearControls(){
         craft_id.setText("");
         cr_name.setText("");
-        cr_price.setText("");
+        cr_actual_price.setText("");
+        cr_selling_price.setText("");
         cr_stock.setText("");
         cr_category.setText("");
         cr_description.setText("");

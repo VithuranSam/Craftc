@@ -9,24 +9,26 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 
 public class DatabaseHelperCraft extends SQLiteOpenHelper {
-    public static final String DATABASE_NAME = "craftcreatures_1.db";
-    public static final String TABLE_NAME = "Craft_S";
+    public static final String DATABASE_NAME = "CCfine.db";
+    public static final String TABLE_NAME = "CC_Craft";
     public static final String COL_1 = "CID";
     public static final String COL_2 = "CraftName";
-    public static final String COL_3 = "CraftPrice";
-    public static final String COL_4 = "CraftStock";
-    public static final String COL_5 = "CraftCategory";
-    public static final String COL_6 = "CraftDes";
+    public static final String COL_3 = "CraftActualPrice";
+    public static final String COL_4 = "CraftSellingPrice";
+    public static final String COL_5 = "Profit";
+    public static final String COL_6 = "CraftStock";
+    public static final String COL_7 = "CraftCategory";
+    public static final String COL_8 = "CraftDes";
 
 
     public DatabaseHelperCraft(Context context) {
         super(context, DATABASE_NAME, null, 1);
-
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("create table " + TABLE_NAME + " (CID Integer PRIMARY KEY AUTOINCREMENT,CraftName text,CraftPrice text,CraftStock text,CraftCategory text,CraftDes text);");
+        sqLiteDatabase.execSQL("create table " + TABLE_NAME + " (CID Integer PRIMARY KEY AUTOINCREMENT,CraftName text,CraftActualPrice text,CraftSellingPrice text,Profit text,CraftStock text,CraftCategory text,CraftDes text);");
     }
 
     @Override
@@ -35,14 +37,16 @@ public class DatabaseHelperCraft extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-    public boolean insertData(String craftname,String craftprice,String craftstock,String craftcate,String craftdes){
+    public boolean insertData(String craftname,String craftactualprice,String craftsellingprice,String profit,String craftstock,String craftcate,String craftdes){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_2,craftname);
-        contentValues.put(COL_3,craftprice);
-        contentValues.put(COL_4,craftstock);
-        contentValues.put(COL_5,craftcate);
-        contentValues.put(COL_6,craftdes);
+        contentValues.put(COL_3,craftactualprice);
+        contentValues.put(COL_4,craftsellingprice);
+        contentValues.put(COL_5,profit);
+        contentValues.put(COL_6,craftstock);
+        contentValues.put(COL_7,craftcate);
+        contentValues.put(COL_8,craftdes);
         long result = sqLiteDatabase.insert(TABLE_NAME,null,contentValues);
         if(result == -1)
             return false;
@@ -56,15 +60,17 @@ public class DatabaseHelperCraft extends SQLiteOpenHelper {
         return res;
     }
 
-    public boolean updateData( String crid,String craftname,String craftprice,String craftstock,String craftcate,String craftdes){
+    public boolean updateData( String crid,String craftname,String craftactualprice,String craftsellingprice,String profit,String craftstock,String craftcate,String craftdes){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_1,crid);
         contentValues.put(COL_2,craftname);
-        contentValues.put(COL_3,craftprice);
-        contentValues.put(COL_4,craftstock);
-        contentValues.put(COL_5,craftcate);
-        contentValues.put(COL_6,craftdes);
+        contentValues.put(COL_3,craftactualprice);
+        contentValues.put(COL_4,craftsellingprice);
+        contentValues.put(COL_5,profit);
+        contentValues.put(COL_6,craftstock);
+        contentValues.put(COL_7,craftcate);
+        contentValues.put(COL_8,craftdes);
         db.update(TABLE_NAME,contentValues,"CID = ?",new String[]{ crid });
         return  true;
     }
