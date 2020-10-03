@@ -1,4 +1,4 @@
-package com.squadron.craftcreatures;
+package com.squadron.craftcreatures.Delivery;
 
 import android.content.ContentValues;
 import android.content.Context;

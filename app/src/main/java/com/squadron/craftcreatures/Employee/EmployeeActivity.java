@@ -72,7 +72,6 @@ public class EmployeeActivity extends AppCompatActivity {
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Add new employee");
         builder.setView(subView);
         builder.create();
 

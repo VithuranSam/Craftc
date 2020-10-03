@@ -1,100 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="8dp"
-    android:background="@drawable/bg"
-    android:orientation="vertical">
+    android:layout_marginBottom="1dp"
+    card_view:cardElevation="2dp"
+    card_view:cardUseCompatPadding="true">
 
-    <ImageView
-        android:id="@+id/add_craftimg"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:src="@drawable/addemp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
-        android:layout_marginLeft="70dp"
-        android:layout_marginRight="70dp"
-
-        />
-
-    <EditText
-        android:id="@+id/enter_name"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/enter_name"
-        android:textColorHint="@color/colorPrimaryDark"
-        android:textSize="16dp"
-        android:layout_below="@+id/add_craftimg"
-        android:layout_marginTop="90dp"
-        android:inputType="text"
-        android:background="@drawable/br_border"
-        android:maxLines="1"
-        android:layout_marginRight="8dp"
-        android:layout_marginEnd="8dp"
-        android:textColor="@color/colorBlack"
-        android:padding="12dp"/>
+        android:background="#743C8A34"
+        android:orientation="horizontal"
+        android:padding="16dp">
 
-    <EditText
-        android:id="@+id/enter_phno"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/br_border"
-        android:hint="@string/enter_number"
-        android:inputType="number"
-        android:maxLines="1"
-        android:padding="12dp"
-        android:textColor="@color/colorBlack"
-        android:textColorHint="@color/colorPrimaryDark"
-        android:textSize="16dp" />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/jobtitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/br_border"
-        android:hint="@string/jobtitle"
-        android:inputType="text"
-        android:maxLines="1"
-        android:padding="12dp"
-        android:textColor="@color/colorBlack"
-        android:textColorHint="@color/colorPrimaryDark"
-        android:textSize="16dp" />
+            <TextView
+                android:id="@+id/contact_name"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:textColor="@color/colorBlack"
+                android:textSize="16dp"
+                android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/salary"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/br_border"
-        android:hint="@string/salary"
-        android:inputType="number"
-        android:maxLines="1"
-        android:padding="12dp"
-        android:textColor="@color/colorBlack"
-        android:textColorHint="@color/colorPrimaryDark"
-        android:textSize="16dp" />
+            <TextView
+                android:id="@+id/jobtitle"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/contact_name"
+                android:layout_weight="4"
+                android:textColor="@color/colorBlack"
+                android:textSize="14dp"
+                android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/br_border"
-        android:hint="@string/email"
-        android:inputType="text"
-        android:maxLines="1"
-        android:padding="12dp"
-        android:textColor="@color/colorBlack"
-        android:textColorHint="@color/colorPrimaryDark"
-        android:textSize="16dp"
-        tools:ignore="TextFields" />
+            <TextView
+                android:id="@+id/salary"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/jobtitle"
+                android:layout_weight="4"
+                android:textColor="@color/colorBlack"
+                android:textSize="14dp"
+                android:textStyle="bold" />
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/ph_no"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/salary"
+                android:layout_weight="4"
+                android:textColor="@color/colorBlack"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ph_no"
+                android:layout_weight="4"
+                android:textColor="@color/colorBlack"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/edit_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="4"
+            android:src="@drawable/pedit" />
+
+        <ImageView
+            android:id="@+id/delete_contact"
+            android:layout_width="0dp"
+            android:layout_height="33dp"
+            android:layout_gravity="center"
+            android:layout_weight="4"
+            android:src="@drawable/pdelete" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
