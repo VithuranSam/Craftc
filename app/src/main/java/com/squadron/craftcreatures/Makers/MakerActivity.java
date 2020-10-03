@@ -3,8 +3,10 @@ package com.squadron.craftcreatures.Makers;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,7 +18,7 @@ public class MakerActivity extends AppCompatActivity {
     DatabaseHelperMaker myDb;
     EditText maker_name,maker_email,maker_phone,quantity,unit_price,maker_id,buying_price;
     LinearLayout maker_add,maker_edit,maker_delete;
-    Button maker_view,cal;
+    Button maker_view,cal,search;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +40,14 @@ public class MakerActivity extends AppCompatActivity {
         maker_delete = (LinearLayout)findViewById((R.id.maker_delete_button));
 
         maker_view = (Button)findViewById((R.id.maker_view_button));
-        cal = (Button)findViewById(R.id.cal_total) ;
+        cal = (Button)findViewById(R.id.maker_cal_total);
+        search = (Button)findViewById(R.id.maker_search_view);
 
         AddData();
         ViewAll();
         UpdateData();
         DeleteData();
+        SearchData();
 
         cal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,7 +129,6 @@ public class MakerActivity extends AppCompatActivity {
     }
 
     public void UpdateData() {
-
         maker_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -155,6 +158,32 @@ public class MakerActivity extends AppCompatActivity {
             }
         });
 
+
+    }
+
+    public void SearchData(){
+
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Cursor data = myDb.searchData(maker_id.getText().toString());
+                if (data.getCount() == 0) {
+                    //Show Message
+                    showMessage("Error ", "Nothing Found");
+                    return;
+                }
+                StringBuffer stringBuffer = new StringBuffer();
+                while (data.moveToNext()) {
+                    maker_id.setText( data.getString(0));
+                    maker_name.setText( data.getString(1));
+                    maker_email.setText( data.getString(2));
+                    maker_phone.setText( data.getString(3));
+                    quantity.setText( data.getString(4));
+                    unit_price.setText( data.getString(5));
+                    buying_price.setText( data.getString(6));
+                }
+            }
+        });
 
     }
 

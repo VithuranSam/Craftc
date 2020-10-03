@@ -75,4 +75,9 @@ public class DatabaseHelperMaker extends SQLiteOpenHelper {
         return sqLiteDatabase.delete(TABLE_NAME,"MakerID = ?",new String[]{ makerid });
     }
 
+    public Cursor searchData(String makerid) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        Cursor data = sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + COL_1 + "= '" + makerid + "'",null);
+        return data;
+    };
 }
