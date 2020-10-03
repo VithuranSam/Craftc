@@ -10,16 +10,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-
-
-import com.squadron.craftcreatures.Crafts.CraftActivity;
 import com.squadron.craftcreatures.R;
 
 public class MakerActivity extends AppCompatActivity {
     DatabaseHelperMaker myDb;
     EditText maker_name,maker_email,maker_phone,quantity,unit_price,maker_id,buying_price;
     LinearLayout maker_add,maker_edit,maker_delete;
-    Button maker_view;
+    Button maker_view,cal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +38,37 @@ public class MakerActivity extends AppCompatActivity {
         maker_delete = (LinearLayout)findViewById((R.id.maker_delete_button));
 
         maker_view = (Button)findViewById((R.id.maker_view_button));
+        cal = (Button)findViewById(R.id.cal_total) ;
 
         AddData();
         ViewAll();
         UpdateData();
         DeleteData();
 
+        cal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (quantity.getText().toString().length() == 0 ){
+                    quantity.setText("0");
+                }
+
+                if (unit_price.getText().toString().length() == 0 ){
+                    quantity.setText("0");
+                }
+                buying_price.setText(String.valueOf(calculate()));
+            }
+
+
+        });
+
+    }
+
+    public int calculate() {
+        int qu = Integer.parseInt(quantity.getText().toString());
+        int unit_p = Integer.parseInt(unit_price.getText().toString());
+
+        int cal = qu * unit_p;
+        return cal;
     }
 
     public void AddData() {
@@ -55,9 +77,10 @@ public class MakerActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                boolean isInserted = myDb.insertData(maker_name.getText().toString(), maker_email.getText().toString(), maker_phone.getText().toString(), quantity.getText().toString(), unit_price.getText().toString(), buying_price.getText().toString() );
+                boolean isInserted = myDb.insertData(maker_name.getText().toString(), maker_email.getText().toString(), maker_phone.getText().toString(), quantity.getText().toString(), unit_price.getText().toString(), buying_price.getText().toString());
                 if (isInserted == true) {
                     Toast.makeText(MakerActivity.this, "Data Inserted", Toast.LENGTH_SHORT).show();
+                    clearControls();
                 } else {
                     Toast.makeText(MakerActivity.this, "Data not Inserted", Toast.LENGTH_SHORT).show();
                 }
@@ -109,6 +132,7 @@ public class MakerActivity extends AppCompatActivity {
                 boolean isUpdate = myDb.updateData(maker_id.getText().toString(), maker_name.getText().toString(), maker_email.getText().toString(), maker_phone.getText().toString(), quantity.getText().toString(), unit_price.getText().toString(), buying_price.getText().toString() );
                 if (isUpdate == true) {
                     Toast.makeText(MakerActivity.this, "Data Updated", Toast.LENGTH_SHORT).show();
+                    clearControls();
                 } else {
                     Toast.makeText(MakerActivity.this, "Data not Updated", Toast.LENGTH_SHORT).show();
                 }
@@ -124,6 +148,7 @@ public class MakerActivity extends AppCompatActivity {
                 Integer deletedRows = myDb.deleteData(maker_id.getText().toString());
                 if (deletedRows > 0) {
                     Toast.makeText(MakerActivity.this, "Data Deleted", Toast.LENGTH_SHORT).show();
+                    clearControls();
                 } else {
                     Toast.makeText(MakerActivity.this, "Data not Deleted", Toast.LENGTH_SHORT).show();
                 }
@@ -131,6 +156,16 @@ public class MakerActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    private void clearControls(){
+        maker_id.setText("");
+        maker_name.setText("");
+        maker_email.setText("");
+        maker_phone.setText("");
+        quantity.setText("");
+        unit_price.setText("");
+        buying_price.setText("");
     }
 
 }

@@ -72,7 +72,7 @@
         />
 
     <EditText
-        android:id="@+id/maker_input_quantity"
+        android:id="@+id/maker_input_unit_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/input_design_brown"
@@ -81,43 +81,75 @@
         android:layout_marginLeft="60dp"
         android:layout_marginRight="60dp"
         android:layout_marginTop="10dp"
-        android:hint="Craft Quantity"
-        android:inputType="text"
-        android:textColor="#A0522D"
-        android:textColorHint="#A0522D"
-        android:textSize="18sp"
-        android:textStyle="normal"
-        />
-    <EditText
-        android:id="@+id/maker_input_unit_price"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/input_design_brown"
-        android:layout_below="@+id/maker_input_quantity"
-        android:padding="10dp"
-        android:layout_marginLeft="60dp"
-        android:layout_marginRight="60dp"
-        android:layout_marginTop="10dp"
         android:hint="Unit Price"
-        android:inputType="text"
+        android:inputType="number"
         android:textColor="#A0522D"
         android:textColorHint="#A0522D"
         android:textSize="18sp"
         android:textStyle="normal"
         />
 
+    <LinearLayout
+        android:id="@+id/layout_two"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:gravity="center"
+        android:layout_below="@+id/maker_input_unit_price"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_marginRight="40dp"
+            android:layout_height="50dp"
+            android:padding="1dp"
+            android:gravity="center"
+            android:orientation="vertical">
+        <EditText
+            android:id="@+id/maker_input_quantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/input_design_brown"
+            android:layout_below="@+id/maker_input_unit_price"
+            android:padding="10dp"
+            android:hint="Craft Quantity"
+            android:inputType="number"
+            android:textColor="#A0522D"
+            android:textColorHint="#A0522D"
+            android:textSize="18sp"
+            android:textStyle="normal"
+            android:orientation="vertical"
+            />
+        </LinearLayout>>
+    <LinearLayout
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:padding="1dp"
+        android:gravity="center"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/cal_total"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@drawable/add1"
+            android:width="50dp"
+            android:height="50dp"
+            />
+    </LinearLayout>>
+    </LinearLayout>>
     <EditText
         android:id="@+id/maker_input_buying_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/input_design_brown"
-        android:layout_below="@+id/maker_input_unit_price"
+        android:layout_below="@+id/layout_two"
         android:padding="10dp"
         android:layout_marginLeft="60dp"
         android:layout_marginRight="60dp"
         android:layout_marginTop="10dp"
         android:hint="Buying Price"
-        android:inputType="text"
+        android:inputType="number"
         android:textColor="#A0522D"
         android:textColorHint="#A0522D"
         android:textSize="18sp"
