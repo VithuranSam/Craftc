@@ -58,7 +58,7 @@ public class emp{
         return jobtitle;
     }
 
-    public void setJobtitle(String phno) {
+    public void setJobtitle(String jobtitle) {
         this.jobtitle = jobtitle;
     }
 
