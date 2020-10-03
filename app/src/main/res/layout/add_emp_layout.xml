@@ -2,20 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="8dp"
+    android:layout_height="match_parent"
     android:background="@drawable/bg"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="8dp">
 
     <ImageView
         android:id="@+id/add_craftimg"
         android:layout_width="250dp"
         android:layout_height="50dp"
-        android:src="@drawable/addemp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
         android:layout_marginLeft="70dp"
+        android:layout_marginTop="1dp"
         android:layout_marginRight="70dp"
+        android:src="@drawable/addemp"
 
         />
 
@@ -23,78 +22,52 @@
         android:id="@+id/enter_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:ems="10"
         android:hint="@string/enter_name"
-        android:textColorHint="@color/colorPrimaryDark"
-        android:textSize="16dp"
-        android:layout_below="@+id/add_craftimg"
-        android:layout_marginTop="90dp"
-        android:inputType="text"
-        android:background="@drawable/br_border"
-        android:maxLines="1"
-        android:layout_marginRight="8dp"
-        android:layout_marginEnd="8dp"
-        android:textColor="@color/colorBlack"
-        android:padding="12dp"/>
+        android:inputType="textPersonName"
+        android:textColor="@color/colorAccent"
+        android:textColorHighlight="@color/colorAccent"
+        android:textColorHint="@color/colorAccent"
+        android:textColorLink="@color/colorAccent" />
 
     <EditText
         android:id="@+id/enter_phno"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/br_border"
+        android:ems="10"
         android:hint="@string/enter_number"
-        android:inputType="number"
-        android:maxLines="1"
-        android:padding="12dp"
-        android:textColor="@color/colorBlack"
-        android:textColorHint="@color/colorPrimaryDark"
-        android:textSize="16dp" />
+        android:inputType="phone"
+        android:textColor="@color/colorAccent"
+        android:textColorHint="@color/colorAccent" />
 
     <EditText
         android:id="@+id/jobtitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/br_border"
+        android:ems="10"
         android:hint="@string/jobtitle"
-        android:inputType="text"
-        android:maxLines="1"
-        android:padding="12dp"
-        android:textColor="@color/colorBlack"
-        android:textColorHint="@color/colorPrimaryDark"
-        android:textSize="16dp" />
+        android:inputType="textPersonName"
+        android:textColor="@color/colorAccent"
+        android:textColorHint="@color/colorAccent" />
 
     <EditText
         android:id="@+id/salary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/br_border"
+        android:ems="10"
         android:hint="@string/salary"
         android:inputType="number"
-        android:maxLines="1"
-        android:padding="12dp"
-        android:textColor="@color/colorBlack"
-        android:textColorHint="@color/colorPrimaryDark"
-        android:textSize="16dp" />
+        android:textColor="@color/colorAccent"
+        android:textColorHint="@color/colorAccent" />
 
     <EditText
         android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/br_border"
+        android:ems="10"
         android:hint="@string/email"
-        android:inputType="text"
-        android:maxLines="1"
-        android:padding="12dp"
-        android:textColor="@color/colorBlack"
-        android:textColorHint="@color/colorPrimaryDark"
-        android:textSize="16dp"
-        tools:ignore="TextFields" />
+        android:inputType="textEmailAddress"
+        android:textColor="@color/colorAccent"
+        android:textColorHint="@color/colorAccent" />
 
 </LinearLayout>
