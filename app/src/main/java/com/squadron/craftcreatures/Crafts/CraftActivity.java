@@ -56,6 +56,7 @@ public class CraftActivity extends AppCompatActivity {
                 boolean isInserted = myDb.insertData(cr_name.getText().toString(), cr_price.getText().toString(), cr_stock.getText().toString(), cr_category.getText().toString(), cr_description.getText().toString());
                 if (isInserted == true) {
                     Toast.makeText(CraftActivity.this, "Data Inserted", Toast.LENGTH_SHORT).show();
+                    clearControls();
                 } else {
                     Toast.makeText(CraftActivity.this, "Data not Inserted", Toast.LENGTH_SHORT).show();
                 }
@@ -105,6 +106,7 @@ public class CraftActivity extends AppCompatActivity {
                 boolean isUpdate = myDb.updateData(craft_id.getText().toString(), cr_name.getText().toString(), cr_price.getText().toString(), cr_stock.getText().toString(), cr_category.getText().toString(), cr_description.getText().toString());
                 if (isUpdate == true) {
                     Toast.makeText(CraftActivity.this, "Data Updated", Toast.LENGTH_SHORT).show();
+                    clearControls();
                 } else {
                     Toast.makeText(CraftActivity.this, "Data not Updated", Toast.LENGTH_SHORT).show();
                 }
@@ -120,6 +122,7 @@ public class CraftActivity extends AppCompatActivity {
                 Integer deletedRows = myDb.deleteData(craft_id.getText().toString());
                 if (deletedRows > 0) {
                     Toast.makeText(CraftActivity.this, "Data Deleted", Toast.LENGTH_SHORT).show();
+                    clearControls();
                 } else {
                     Toast.makeText(CraftActivity.this, "Data not Deleted", Toast.LENGTH_SHORT).show();
                 }
@@ -127,5 +130,13 @@ public class CraftActivity extends AppCompatActivity {
         });
 
 
+    }
+    private void clearControls(){
+        craft_id.setText("");
+        cr_name.setText("");
+        cr_price.setText("");
+        cr_stock.setText("");
+        cr_category.setText("");
+        cr_description.setText("");
     }
 }

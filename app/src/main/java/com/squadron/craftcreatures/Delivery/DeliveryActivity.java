@@ -57,6 +57,7 @@ public class DeliveryActivity extends AppCompatActivity {
                 boolean isInserted = myDb.insertData(cr_name.getText().toString(), amount.getText().toString(),cname.getText().toString(),c_address.getText().toString(),c_phone.getText().toString());
                 if(isInserted == true){
                     Toast.makeText(DeliveryActivity.this, "Data Inserted", Toast.LENGTH_SHORT).show();
+                    clearControls();
                 }
                 else{
                     Toast.makeText(DeliveryActivity.this, "Data not Inserted", Toast.LENGTH_SHORT).show();
@@ -105,6 +106,7 @@ public class DeliveryActivity extends AppCompatActivity {
                 boolean isUpdate = myDb.updateData(delivery_id.getText().toString(),cr_name.getText().toString(),amount.getText().toString(),cname.getText().toString(),c_address.getText().toString(),c_phone.getText().toString());
                 if(isUpdate == true){
                     Toast.makeText(DeliveryActivity.this, "Data Updated", Toast.LENGTH_SHORT).show();
+                    clearControls();
                 }
                 else {
                     Toast.makeText(DeliveryActivity.this, "Data not Updated", Toast.LENGTH_SHORT).show();
@@ -120,6 +122,7 @@ public class DeliveryActivity extends AppCompatActivity {
                 Integer deletedRows = myDb.deleteData(delivery_id.getText().toString());
                 if(deletedRows > 0){
                     Toast.makeText(DeliveryActivity.this, "Data Deleted", Toast.LENGTH_SHORT).show();
+                    clearControls();
                 }
                 else {
                     Toast.makeText(DeliveryActivity.this, "Data not Deleted", Toast.LENGTH_SHORT).show();
@@ -128,9 +131,12 @@ public class DeliveryActivity extends AppCompatActivity {
         });
     }
 
-
-
-
-
-
+    private void clearControls(){
+       delivery_id.setText("");
+        cr_name.setText("");
+        amount.setText("");
+        cname.setText("");
+        c_address.setText("");
+        c_phone.setText("");
+    }
 }
