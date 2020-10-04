@@ -35,6 +35,7 @@ public class EmployeeActivity extends AppCompatActivity {
             sal = (int) (sal - (sal * 0.05));
         }else {sal =sal ;}
         return sal;
+    
     }
 
     @Override
@@ -87,13 +88,11 @@ public class EmployeeActivity extends AppCompatActivity {
         builder.setPositiveButton("ADD employee", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
                 final int sal = Integer.parseInt(salaryField.getText().toString());
                 int salf =  cal_tax(sal);
 
-
                 final String name = nameField.getText().toString();
-                final String salary = String.valueOf(salf);
+                final String salary = String.valueOf(sal);
                 final String jobtitle = jobtitleField.getText().toString();
                 final String ph_no = noField.getText().toString();
                 final String email = emailField.getText().toString();
