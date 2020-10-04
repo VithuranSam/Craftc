@@ -92,7 +92,7 @@
                 android:background="@drawable/input_design_black"
                 android:layout_below="@+id/maker_input_unit_price"
                 android:padding="10dp"
-                android:hint="Profit"
+                android:hint="Profit/Lost"
                 android:inputType="number"
                 android:textColor="@color/colorBlack"
                 android:textColorHint="@color/colorBlack"
