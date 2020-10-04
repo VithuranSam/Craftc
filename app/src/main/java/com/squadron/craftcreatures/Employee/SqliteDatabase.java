@@ -56,7 +56,6 @@ public class SqliteDatabase extends SQLiteOpenHelper {
         cursor.close();
         return storeEmp;
     }
-
     public void addemp(emp emp){
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, emp.getName());
@@ -67,7 +66,6 @@ public class SqliteDatabase extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         db.insert(TABLE_EMPLOYEE, null, values);
     }
-
     public void updateemp(emp emp){
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, emp.getName());
@@ -78,25 +76,6 @@ public class SqliteDatabase extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         db.update(TABLE_EMPLOYEE, values, COLUMN_ID	+ "	= ?", new String[] { String.valueOf(emp.getId())});
     }
-
-    public emp findemp(String name){
-        String query = "Select * FROM "	+ TABLE_EMPLOYEE + " WHERE " + COLUMN_NAME + " = " + "name";
-        SQLiteDatabase db = this.getWritableDatabase();
-        emp emp = null;
-        Cursor cursor = db.rawQuery(query,	null);
-        if	(cursor.moveToFirst()){
-            int id = Integer.parseInt(cursor.getString(0));
-            String empName = cursor.getString(1);
-            String empJobtitle = cursor.getString(2);
-            String empSalary = cursor.getString(3);
-            String empNo = cursor.getString(4);
-            String empEmail = cursor.getString(5);
-            emp = new emp(id, empName, empJobtitle, empSalary, empEmail,empNo);
-        }
-        cursor.close();
-        return emp;
-    }
-
     public void deleteemp(int id){
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_EMPLOYEE, COLUMN_ID	+ "	= ?", new String[] { String.valueOf(id)});

@@ -153,7 +153,6 @@ public class empAdapter extends RecyclerView.Adapter<empViewHolder> implements F
                 final String salary = String.valueOf(salf);
                 final String ph_no = phoneField.getText().toString();
                 final String email = emailField.getText().toString();
-
                 if(TextUtils.isEmpty(name)){
                     Toast.makeText(context, "Something went wrong. Check your input values", Toast.LENGTH_LONG).show();
                 }
@@ -165,7 +164,6 @@ public class empAdapter extends RecyclerView.Adapter<empViewHolder> implements F
                 }
             }
         });
-
         builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

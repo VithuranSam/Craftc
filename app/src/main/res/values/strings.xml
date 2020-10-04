@@ -6,4 +6,5 @@
     <string name="jobtitle">Job Title</string>
     <string name="salary">Enter Basic Salary</string>
     <string name="email">Enter Email</string>
+    <string name="bSalary">Basic Salary</string>
 </resources>

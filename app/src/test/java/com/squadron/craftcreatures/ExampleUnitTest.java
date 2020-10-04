@@ -1,5 +1,7 @@
 package com.squadron.craftcreatures;
 
+import com.squadron.craftcreatures.Employee.EmployeeActivity;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -14,4 +16,11 @@ public class ExampleUnitTest {
     public void addition_isCorrect() {
         assertEquals(4, 2 + 2);
     }
+
+    public void cal_tax_test(){
+        int result = EmployeeActivity.cal_tax(200000);
+        assertEquals( 190000,result);
+    }
+
+
 }

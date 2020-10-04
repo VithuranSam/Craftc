@@ -35,7 +35,7 @@ public class EmployeeActivity extends AppCompatActivity {
             sal = (int) (sal - (sal * 0.05));
         }else {sal =sal ;}
         return sal;
-    
+
     }
 
     @Override
