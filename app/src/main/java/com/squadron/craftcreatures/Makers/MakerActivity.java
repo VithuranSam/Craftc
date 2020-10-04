@@ -18,7 +18,6 @@ import com.basgeekball.awesomevalidation.utility.RegexTemplate;
 import com.squadron.craftcreatures.R;
 
 import static com.basgeekball.awesomevalidation.ValidationStyle.BASIC;
-
 public class MakerActivity extends AppCompatActivity {
     DatabaseHelperMaker myDb;
     EditText maker_name,maker_email,maker_phone,quantity,unit_price,maker_id,buying_price;
@@ -41,17 +40,13 @@ public class MakerActivity extends AppCompatActivity {
         quantity = (EditText)findViewById(R.id.maker_input_quantity);
         unit_price = (EditText)findViewById(R.id.maker_input_unit_price);
         buying_price = (EditText)findViewById(R.id.maker_input_buying_price);
-
         maker_id = (EditText)findViewById(R.id.maker_input_id);
-
         maker_add = (LinearLayout)findViewById((R.id.maker_add_button));
         maker_edit = (LinearLayout)findViewById((R.id.maker_edit_button));
         maker_delete = (LinearLayout)findViewById((R.id.maker_delete_button));
-
         maker_view = (Button)findViewById((R.id.maker_view_button));
         cal = (Button)findViewById(R.id.maker_cal_total);
         search = (Button)findViewById(R.id.maker_search_view);
-
         awesomeValidation.addValidation(MakerActivity.this, R.id.maker_input_name, "[a-zA-Z\\s]+", R.string.err_name);
         awesomeValidation.addValidation(MakerActivity.this, R.id.maker_input_phone, RegexTemplate.TELEPHONE, R.string.err_tel);
         awesomeValidation.addValidation(MakerActivity.this, R.id.maker_input_email, android.util.Patterns.EMAIL_ADDRESS, R.string.err_email);
@@ -100,7 +95,12 @@ public class MakerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (awesomeValidation.validate() == true) {
-                    boolean isInserted = myDb.insertData(maker_name.getText().toString(), maker_email.getText().toString(), maker_phone.getText().toString(), quantity.getText().toString(), unit_price.getText().toString(), buying_price.getText().toString());
+                    boolean isInserted = myDb.insertData(maker_name.getText().toString(),
+                            maker_email.getText().toString(),
+                            maker_phone.getText().toString(),
+                            quantity.getText().toString(),
+                            unit_price.getText().toString(),
+                            buying_price.getText().toString());
                     if (isInserted == true) {
                         Toast.makeText(MakerActivity.this, "Data Inserted", Toast.LENGTH_SHORT).show();
                         clearControls();
@@ -155,7 +155,13 @@ public class MakerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (awesomeValidation.validate() == true) {
-                    boolean isUpdate = myDb.updateData(maker_id.getText().toString(), maker_name.getText().toString(), maker_email.getText().toString(), maker_phone.getText().toString(), quantity.getText().toString(), unit_price.getText().toString(), buying_price.getText().toString());
+                    boolean isUpdate = myDb.updateData(maker_id.getText().toString(),
+                            maker_name.getText().toString(),
+                            maker_email.getText().toString(),
+                            maker_phone.getText().toString(),
+                            quantity.getText().toString(),
+                            unit_price.getText().toString(),
+                            buying_price.getText().toString());
                     if (isUpdate == true) {
                         Toast.makeText(MakerActivity.this, "Data Updated", Toast.LENGTH_SHORT).show();
                         clearControls();

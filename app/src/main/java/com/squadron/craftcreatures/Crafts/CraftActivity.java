@@ -55,6 +55,7 @@ public class CraftActivity extends AppCompatActivity {
         ViewAll();
         UpdateData();
         DeleteData();
+        SearchData();
 
         awesomeValidation.addValidation(CraftActivity.this, R.id.craft_input_crname, "[a-zA-Z\\s]+", R.string.err_name);
         awesomeValidation.addValidation(CraftActivity.this, R.id.craft_input_actual_price, Range.closed(1,1000), R.string.err_ap);
@@ -97,7 +98,13 @@ public class CraftActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (awesomeValidation.validate() == true) {
-                    boolean isInserted = myDb.insertData(cr_name.getText().toString(), cr_actual_price.getText().toString(), cr_selling_price.getText().toString(), profit.getText().toString(), cr_stock.getText().toString(), cr_category.getText().toString(), cr_description.getText().toString());
+                    boolean isInserted = myDb.insertData(cr_name.getText().toString(),
+                            cr_actual_price.getText().toString(),
+                            cr_selling_price.getText().toString(),
+                            profit.getText().toString(),
+                            cr_stock.getText().toString(),
+                            cr_category.getText().toString(),
+                            cr_description.getText().toString());
                     if (isInserted == true) {
                         Toast.makeText(CraftActivity.this, "Data Inserted", Toast.LENGTH_SHORT).show();
                         clearControls();
@@ -151,7 +158,11 @@ public class CraftActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (awesomeValidation.validate() == true) {
-                    boolean isUpdate = myDb.updateData(craft_id.getText().toString(), cr_name.getText().toString(), cr_actual_price.getText().toString(), cr_selling_price.getText().toString(), profit.getText().toString(), cr_stock.getText().toString(), cr_category.getText().toString(), cr_description.getText().toString());
+                    boolean isUpdate = myDb.updateData(craft_id.getText().toString(),
+                            cr_name.getText().toString(), cr_actual_price.getText().toString(),
+                            cr_selling_price.getText().toString(), profit.getText().toString(),
+                            cr_stock.getText().toString(), cr_category.getText().toString(),
+                            cr_description.getText().toString());
                     if (isUpdate == true) {
                         Toast.makeText(CraftActivity.this, "Data Updated", Toast.LENGTH_SHORT).show();
                         clearControls();
@@ -179,12 +190,41 @@ public class CraftActivity extends AppCompatActivity {
         });
 
 
+
+    }
+
+    public void SearchData(){
+
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Cursor data = myDb.searchData(craft_id.getText().toString());
+                if (data.getCount() == 0) {
+                    //Show Message
+                    showMessage("Error ", "Nothing Found");
+                    return;
+                }
+                StringBuffer stringBuffer = new StringBuffer();
+                while (data.moveToNext()) {
+                    craft_id.setText( data.getString(0));
+                    cr_name.setText( data.getString(1));
+                    cr_actual_price.setText( data.getString(2));
+                    cr_selling_price.setText( data.getString(3));
+                    profit.setText( data.getString(4));
+                    cr_stock.setText( data.getString(5));
+                    cr_category.setText( data.getString(6));
+                    cr_description.setText( data.getString(7));
+                }
+            }
+        });
+
     }
     private void clearControls(){
         craft_id.setText("");
         cr_name.setText("");
         cr_actual_price.setText("");
         cr_selling_price.setText("");
+        profit.setText("");
         cr_stock.setText("");
         cr_category.setText("");
         cr_description.setText("");

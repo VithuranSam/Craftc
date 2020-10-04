@@ -28,13 +28,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("CREATE TABLE CC_Delivery (DID Integer PRIMARY KEY AUTOINCREMENT,DItemName text,DItemAmount text,DItemUnitPrice text,DItemSellingPrice text,CName text,CAddress text,CPhone text);");
     }
-
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(sqLiteDatabase);
     }
-
     public boolean insertData(String ditemname,String ditemAmount,String ditemunitprice,String ditemsellingprice,String cname,String caddress,String cphone){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -51,14 +49,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         else
             return true;
     }
-
     public Cursor getAllData(){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
 
         Cursor res = sqLiteDatabase.rawQuery("SELECT * FROM "+ TABLE_NAME,null);
         return res;
     }
-
     public boolean updateData( String id,String ditemname,String ditemAmount,String ditemunitprice,String ditemsellingprice,String cname,String caddress,String cphone){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -73,12 +69,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.update(TABLE_NAME,contentValues,"DID = ?",new String[]{ id });
         return  true;
     }
-
     public Integer deleteData(String id){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         return sqLiteDatabase.delete(TABLE_NAME,"DID = ?",new String[]{id});
     }
-
     public Cursor searchData(String id) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         Cursor data = sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + COL_1 + "= '" + id + "'",null);

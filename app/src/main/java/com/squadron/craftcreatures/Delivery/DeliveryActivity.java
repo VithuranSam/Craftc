@@ -52,20 +52,18 @@ public class DeliveryActivity extends AppCompatActivity {
         delivery_view = (Button)findViewById((R.id.delivery_view_button));
         search = (Button)findViewById((R.id.delivery_search_view));
         cal = (Button)findViewById((R.id.delivery_cal_total));
-
+        awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_name, "[a-zA-Z\\s]+", R.string.err_name);
+        awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_amount, Range.closed(1,1000),R.string.err_amou);
+        awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_unit_price,  Range.closed(1,1000), R.string.err_unip);
+        awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_total_selling_price,  Range.closed(1,10000), R.string.err_sell);
+        awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_caddress, RegexTemplate.NOT_EMPTY, R.string.err_addre);
+        awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_cphone, RegexTemplate.TELEPHONE, R.string.err_tel);
+        awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_cname, "[a-zA-Z\\s]+", R.string.err_cname);
         AddData();
         ViewAll();
         UpdateData();
         DeleteData();
         SearchData();
-
-        awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_name, "[a-zA-Z\\s]+", R.string.err_name);
-        awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_amount, Range.closed(1,1000),R.string.err_amou);
-        awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_unit_price,  Range.closed(1,1000), R.string.err_unip);
-        awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_total_selling_price,  Range.closed(1,1000), R.string.err_sell);
-        awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_caddress, RegexTemplate.NOT_EMPTY, R.string.err_addre);
-        awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_cphone, RegexTemplate.TELEPHONE, R.string.err_tel);
-        awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_cname, "[a-zA-Z\\s]+", R.string.err_cname);
 
         cal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,8 +85,6 @@ public class DeliveryActivity extends AppCompatActivity {
     }
 
     public int calculate(int amountCraft,int unit_p) {
-
-
         int sellingprice = amountCraft * unit_p;
         return sellingprice;
     }
@@ -98,7 +94,13 @@ public class DeliveryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (awesomeValidation.validate() == true) {
-                    boolean isInserted = myDb.insertData(cr_name.getText().toString(), amount.getText().toString(), unit_price.getText().toString(), selling_price.getText().toString(), cname.getText().toString(), c_address.getText().toString(), c_phone.getText().toString());
+                    boolean isInserted = myDb.insertData(cr_name.getText().toString(),
+                            amount.getText().toString(),
+                            unit_price.getText().toString(),
+                            selling_price.getText().toString(),
+                            cname.getText().toString(),
+                            c_address.getText().toString(),
+                            c_phone.getText().toString());
                     if (isInserted == true) {
                         Toast.makeText(DeliveryActivity.this, "Data Inserted", Toast.LENGTH_SHORT).show();
                         clearControls();
@@ -150,7 +152,13 @@ public class DeliveryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (awesomeValidation.validate() == true){
-                boolean isUpdate = myDb.updateData(delivery_id.getText().toString(),cr_name.getText().toString(), amount.getText().toString(),unit_price.getText().toString(),selling_price.getText().toString(),cname.getText().toString(),c_address.getText().toString(),c_phone.getText().toString());
+                boolean isUpdate = myDb.updateData(delivery_id.getText().toString(),
+                        cr_name.getText().toString(), amount.getText().toString(),
+                        unit_price.getText().toString(),
+                        selling_price.getText().toString(),
+                        cname.getText().toString(),
+                        c_address.getText().toString(),
+                        c_phone.getText().toString());
                 if(isUpdate == true){
                     Toast.makeText(DeliveryActivity.this, "Data Updated", Toast.LENGTH_SHORT).show();
                     clearControls();

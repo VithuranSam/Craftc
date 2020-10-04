@@ -53,13 +53,11 @@ public class DatabaseHelperCraft extends SQLiteOpenHelper {
         else
             return true;
     }
-
     public Cursor getAllData(){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         Cursor res = sqLiteDatabase.rawQuery("SELECT * FROM "+ TABLE_NAME,null);
         return res;
     }
-
     public boolean updateData( String crid,String craftname,String craftactualprice,String craftsellingprice,String profit,String craftstock,String craftcate,String craftdes){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -74,10 +72,14 @@ public class DatabaseHelperCraft extends SQLiteOpenHelper {
         db.update(TABLE_NAME,contentValues,"CID = ?",new String[]{ crid });
         return  true;
     }
-
     public Integer deleteData(String crid){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         return sqLiteDatabase.delete(TABLE_NAME,"CID = ?",new String[]{ crid });
     }
+    public Cursor searchData(String crid) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        Cursor data = sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + COL_1 + "= '" + crid + "'",null);
+        return data;
+    };
 
 }

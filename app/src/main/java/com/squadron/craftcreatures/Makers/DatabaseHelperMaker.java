@@ -48,14 +48,12 @@ public class DatabaseHelperMaker extends SQLiteOpenHelper {
         else
             return true;
     }
-
     public Cursor getAllData(){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
 
         Cursor res = sqLiteDatabase.rawQuery("SELECT * FROM "+ TABLE_NAME,null);
         return res;
     }
-
     public boolean updateData( String makerid,String makersname, String makeremail, String makerphone, String craftquantity, String unitprice, String buyingprice){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -69,12 +67,10 @@ public class DatabaseHelperMaker extends SQLiteOpenHelper {
         db.update(TABLE_NAME,contentValues,"MakerID = ?",new String[]{ makerid });
         return  true;
     }
-
     public Integer deleteData(String makerid){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         return sqLiteDatabase.delete(TABLE_NAME,"MakerID = ?",new String[]{ makerid });
     }
-
     public Cursor searchData(String makerid) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         Cursor data = sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + COL_1 + "= '" + makerid + "'",null);
