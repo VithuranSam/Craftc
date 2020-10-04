@@ -28,6 +28,15 @@ public class EmployeeActivity extends AppCompatActivity {
     private ArrayList<emp> allemp=new ArrayList<>();
     private empAdapter mAdapter;
 
+    public int my_sal = 0;
+
+    public static int cal_tax (int sal){
+        if(sal > 100000){
+            sal = (int) (sal - (sal * 0.05));
+        }else {sal =sal ;}
+        return sal;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,8 +87,13 @@ public class EmployeeActivity extends AppCompatActivity {
         builder.setPositiveButton("ADD employee", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+
+                final int sal = Integer.parseInt(salaryField.getText().toString());
+                int salf =  cal_tax(sal);
+
+
                 final String name = nameField.getText().toString();
-                final String salary = salaryField.getText().toString();
+                final String salary = String.valueOf(salf);
                 final String jobtitle = jobtitleField.getText().toString();
                 final String ph_no = noField.getText().toString();
                 final String email = emailField.getText().toString();

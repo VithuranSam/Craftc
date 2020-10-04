@@ -10,7 +10,7 @@ public class emp{
 
 
 
-    public emp(String name, String phno, String jobtitle, String email, String salary) {
+    public emp(String name, String jobtitle, String salary ,String phno,String email) {
         this.name = name;
         this.phno = phno;
         this.jobtitle = jobtitle;
@@ -18,7 +18,7 @@ public class emp{
         this.email = email;
     }
 
-    public emp(int id, String name, String phno, String jobtitle, String email, String salary) {
+    public emp(int id, String name, String jobtitle, String salary ,String phno,String email) {
         this.id = id;
         this.name = name;
         this.phno = phno;

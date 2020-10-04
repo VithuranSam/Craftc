@@ -136,7 +136,6 @@ public class empAdapter extends RecyclerView.Adapter<empViewHolder> implements F
             phoneField.setText(String.valueOf(emp.getPhno()));
             emailField.setText(String.valueOf(emp.getEmail()));
         }
-
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setView(subView);
         builder.create();
