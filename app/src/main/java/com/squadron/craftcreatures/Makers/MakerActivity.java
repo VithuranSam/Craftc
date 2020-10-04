@@ -3,27 +3,36 @@ package com.squadron.craftcreatures.Makers;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
-import android.content.Intent;
+
 import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import com.basgeekball.awesomevalidation.AwesomeValidation;
+import com.basgeekball.awesomevalidation.utility.RegexTemplate;
 import com.squadron.craftcreatures.R;
+
+import static com.basgeekball.awesomevalidation.ValidationStyle.BASIC;
 
 public class MakerActivity extends AppCompatActivity {
     DatabaseHelperMaker myDb;
     EditText maker_name,maker_email,maker_phone,quantity,unit_price,maker_id,buying_price;
     LinearLayout maker_add,maker_edit,maker_delete;
     Button maker_view,cal,search;
+    AwesomeValidation awesomeValidation;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maker);
+
+        awesomeValidation = new AwesomeValidation(BASIC);
         myDb = new DatabaseHelperMaker(this);
 
         maker_name = (EditText)findViewById(R.id.maker_input_name);
@@ -43,11 +52,20 @@ public class MakerActivity extends AppCompatActivity {
         cal = (Button)findViewById(R.id.maker_cal_total);
         search = (Button)findViewById(R.id.maker_search_view);
 
+        awesomeValidation.addValidation(MakerActivity.this, R.id.maker_input_name, "[a-zA-Z\\s]+", R.string.err_name);
+        awesomeValidation.addValidation(MakerActivity.this, R.id.maker_input_phone, RegexTemplate.TELEPHONE, R.string.err_tel);
+        awesomeValidation.addValidation(MakerActivity.this, R.id.maker_input_email, android.util.Patterns.EMAIL_ADDRESS, R.string.err_email);
+        awesomeValidation.addValidation(MakerActivity.this, R.id.maker_input_quantity, RegexTemplate.NOT_EMPTY, R.string.err_qu);
+        awesomeValidation.addValidation(MakerActivity.this, R.id.maker_input_unit_price, RegexTemplate.NOT_EMPTY, R.string.err_unip);
+        awesomeValidation.addValidation(MakerActivity.this, R.id.maker_input_buying_price, RegexTemplate.NOT_EMPTY, R.string.err_buy);
+
         AddData();
         ViewAll();
         UpdateData();
         DeleteData();
         SearchData();
+
+
 
         cal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,15 +99,19 @@ public class MakerActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                boolean isInserted = myDb.insertData(maker_name.getText().toString(), maker_email.getText().toString(), maker_phone.getText().toString(), quantity.getText().toString(), unit_price.getText().toString(), buying_price.getText().toString());
-                if (isInserted == true) {
-                    Toast.makeText(MakerActivity.this, "Data Inserted", Toast.LENGTH_SHORT).show();
-                    clearControls();
-                } else {
-                    Toast.makeText(MakerActivity.this, "Data not Inserted", Toast.LENGTH_SHORT).show();
+                if (awesomeValidation.validate() == true) {
+                    boolean isInserted = myDb.insertData(maker_name.getText().toString(), maker_email.getText().toString(), maker_phone.getText().toString(), quantity.getText().toString(), unit_price.getText().toString(), buying_price.getText().toString());
+                    if (isInserted == true) {
+                        Toast.makeText(MakerActivity.this, "Data Inserted", Toast.LENGTH_SHORT).show();
+                        clearControls();
+                    } else {
+                        Toast.makeText(MakerActivity.this, "Data not Inserted", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
                 }
 
-            }
+
         });
     }
 
@@ -132,12 +154,14 @@ public class MakerActivity extends AppCompatActivity {
         maker_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean isUpdate = myDb.updateData(maker_id.getText().toString(), maker_name.getText().toString(), maker_email.getText().toString(), maker_phone.getText().toString(), quantity.getText().toString(), unit_price.getText().toString(), buying_price.getText().toString() );
-                if (isUpdate == true) {
-                    Toast.makeText(MakerActivity.this, "Data Updated", Toast.LENGTH_SHORT).show();
-                    clearControls();
-                } else {
-                    Toast.makeText(MakerActivity.this, "Data not Updated", Toast.LENGTH_SHORT).show();
+                if (awesomeValidation.validate() == true) {
+                    boolean isUpdate = myDb.updateData(maker_id.getText().toString(), maker_name.getText().toString(), maker_email.getText().toString(), maker_phone.getText().toString(), quantity.getText().toString(), unit_price.getText().toString(), buying_price.getText().toString());
+                    if (isUpdate == true) {
+                        Toast.makeText(MakerActivity.this, "Data Updated", Toast.LENGTH_SHORT).show();
+                        clearControls();
+                    } else {
+                        Toast.makeText(MakerActivity.this, "Data not Updated", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });

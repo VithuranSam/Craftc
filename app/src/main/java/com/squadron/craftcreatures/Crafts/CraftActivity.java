@@ -14,19 +14,26 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 
+import com.basgeekball.awesomevalidation.AwesomeValidation;
+import com.basgeekball.awesomevalidation.utility.RegexTemplate;
+import com.google.common.collect.Range;
 import com.squadron.craftcreatures.R;
+
+import static com.basgeekball.awesomevalidation.ValidationStyle.BASIC;
 
 public class CraftActivity extends AppCompatActivity {
     DatabaseHelperCraft myDb;
     EditText cr_name, cr_actual_price,cr_selling_price,profit, cr_stock, cr_category, cr_description, craft_id;
     LinearLayout craft_add, craft_edit, craft_delete;
     Button craft_view,cal_craft,search;
+    AwesomeValidation awesomeValidation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_craft);
         myDb = new DatabaseHelperCraft(this);
+        awesomeValidation = new AwesomeValidation(BASIC);
 
         craft_id = (EditText) findViewById(R.id.craft_input_id);
         cr_name = (EditText) findViewById(R.id.craft_input_crname);
@@ -48,6 +55,14 @@ public class CraftActivity extends AppCompatActivity {
         ViewAll();
         UpdateData();
         DeleteData();
+
+        awesomeValidation.addValidation(CraftActivity.this, R.id.craft_input_crname, "[a-zA-Z\\s]+", R.string.err_name);
+        awesomeValidation.addValidation(CraftActivity.this, R.id.craft_input_actual_price, Range.closed(1,1000), R.string.err_ap);
+        awesomeValidation.addValidation(CraftActivity.this, R.id.craft_input_selling_price, Range.closed(1,1000), R.string.err_sp);
+        awesomeValidation.addValidation(CraftActivity.this, R.id.craft_input_profit, Range.closed(1,1000), R.string.err_prof);
+        awesomeValidation.addValidation(CraftActivity.this, R.id.craft_input_stock, Range.closed(1,1000), R.string.err_sto);
+        awesomeValidation.addValidation(CraftActivity.this, R.id.craft_input_category, RegexTemplate.NOT_EMPTY, R.string.err_cat);
+        awesomeValidation.addValidation(CraftActivity.this, R.id.craft_input_description, RegexTemplate.NOT_EMPTY, R.string.err_des);
 
         cal_craft.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,12 +95,14 @@ public class CraftActivity extends AppCompatActivity {
         craft_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean isInserted = myDb.insertData(cr_name.getText().toString(), cr_actual_price.getText().toString(),cr_selling_price.getText().toString(),profit.getText().toString(), cr_stock.getText().toString(), cr_category.getText().toString(), cr_description.getText().toString());
-                if (isInserted == true) {
-                    Toast.makeText(CraftActivity.this, "Data Inserted", Toast.LENGTH_SHORT).show();
-                    clearControls();
-                } else {
-                    Toast.makeText(CraftActivity.this, "Data not Inserted", Toast.LENGTH_SHORT).show();
+                if (awesomeValidation.validate() == true) {
+                    boolean isInserted = myDb.insertData(cr_name.getText().toString(), cr_actual_price.getText().toString(), cr_selling_price.getText().toString(), profit.getText().toString(), cr_stock.getText().toString(), cr_category.getText().toString(), cr_description.getText().toString());
+                    if (isInserted == true) {
+                        Toast.makeText(CraftActivity.this, "Data Inserted", Toast.LENGTH_SHORT).show();
+                        clearControls();
+                    } else {
+                        Toast.makeText(CraftActivity.this, "Data not Inserted", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
@@ -132,12 +149,14 @@ public class CraftActivity extends AppCompatActivity {
         craft_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean isUpdate = myDb.updateData(craft_id.getText().toString(), cr_name.getText().toString(), cr_actual_price.getText().toString(),cr_selling_price.getText().toString(),profit.getText().toString(), cr_stock.getText().toString(), cr_category.getText().toString(), cr_description.getText().toString());
-                if (isUpdate == true) {
-                    Toast.makeText(CraftActivity.this, "Data Updated", Toast.LENGTH_SHORT).show();
-                    clearControls();
-                } else {
-                    Toast.makeText(CraftActivity.this, "Data not Updated", Toast.LENGTH_SHORT).show();
+                if (awesomeValidation.validate() == true) {
+                    boolean isUpdate = myDb.updateData(craft_id.getText().toString(), cr_name.getText().toString(), cr_actual_price.getText().toString(), cr_selling_price.getText().toString(), profit.getText().toString(), cr_stock.getText().toString(), cr_category.getText().toString(), cr_description.getText().toString());
+                    if (isUpdate == true) {
+                        Toast.makeText(CraftActivity.this, "Data Updated", Toast.LENGTH_SHORT).show();
+                        clearControls();
+                    } else {
+                        Toast.makeText(CraftActivity.this, "Data not Updated", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });

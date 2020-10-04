@@ -14,7 +14,6 @@
         <activity android:name=".Crafts.CraftActivity" />
         <activity android:name=".Employee.EmployeeActivity" />
         <activity android:name=".Admin" />
-        <activity android:name=".SignupActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

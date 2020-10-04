@@ -6,4 +6,21 @@
     <string name="jobtitle">Job Title</string>
     <string name="salary">Enter Basic Salary</string>
     <string name="email">Enter Email</string>
+    <string name="err_name" >Enter Valid Name</string>
+    <string name="err_tel" >Enter Valid Contact Number</string>
+    <string name="err_email" >Enter Valid Email</string>
+    <string name="err_qu">Required</string>
+    <string name="err_unip">Required</string>
+    <string name="err_buy">Required</string>
+    <string name="err_cname">Enter Valid name</string>
+    <string name="err_sell">Required</string>
+    <string name="err_addre">Required</string>
+    <string name="err_ap">Requireed</string>
+    <string name="err_sp">Requireed</string>
+    <string name="err_prof">Requireed</string>
+    <string name="err_sto">Requireed</string>
+    <string name="err_cat">Requireed</string>
+    <string name="err_des">Requireed</string>
+    <string name="err_amou">Reqired</string>
+
 </resources>

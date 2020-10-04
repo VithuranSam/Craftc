@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -34,14 +33,14 @@ public class LoginActivity extends AppCompatActivity {
                 String AdminName = a_name.getText().toString().trim();
                 String AdminPassword = a_pass.getText().toString().trim();
 
-                if (AdminName.equals("") || AdminPassword.equals("")) {
-                    Toast.makeText(getApplicationContext(), "Please fill All fields", Toast.LENGTH_SHORT).show();
+                if (AdminName.equals("admin@gmail.com") && AdminPassword.equals("admin")) {
+                    Intent adm=new Intent(LoginActivity.this,Admin.class);
+                    startActivity(adm);
+                    Toast.makeText(getApplicationContext(), "Log in Sucessfully", Toast.LENGTH_SHORT).show();
                 } else {
-                    Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM RegisterAdmin WHERE AdminName='"+AdminName+"' and AdminPassword='"+ AdminPassword+"';", new String[]{});
+                    Toast.makeText(getApplicationContext(),"Invalid Login",Toast.LENGTH_LONG).show();
 
-                    Intent adActivity = new Intent(LoginActivity.this, Admin.class);
-                    startActivity(adActivity);
-                    Toast.makeText(getApplicationContext(), "Admin", Toast.LENGTH_LONG).show();
+
                 }
             }
         });

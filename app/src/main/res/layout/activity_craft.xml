@@ -69,24 +69,6 @@
         android:textStyle="normal"
         />
 
-<!--    <EditText-->
-<!--        android:id="@+id/craft_input_profit"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:background="@drawable/input_design_black"-->
-<!--        android:layout_below="@+id/craft_input_selling_price"-->
-<!--        android:padding="10dp"-->
-<!--        android:layout_marginLeft="60dp"-->
-<!--        android:layout_marginRight="60dp"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        android:hint="Profit"-->
-<!--        android:inputType="text"-->
-<!--        android:textColor="@color/colorBlack"-->
-<!--        android:textColorHint="@color/colorBlack"-->
-<!--        android:textSize="18sp"-->
-<!--        android:textStyle="normal"-->
-<!--        />-->
-
     <LinearLayout
         android:id="@+id/layout_two"
         android:layout_width="match_parent"
