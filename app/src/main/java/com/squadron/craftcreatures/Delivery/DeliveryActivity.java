@@ -77,19 +77,20 @@ public class DeliveryActivity extends AppCompatActivity {
                 if (unit_price.getText().toString().length() == 0 ){
                     amount.setText("0");
                 }
-                selling_price.setText(String.valueOf(calculate()));
+                int amountCraft = Integer.parseInt(amount.getText().toString());
+                int unit_p = Integer.parseInt(unit_price.getText().toString());
+                selling_price.setText(String.valueOf(calculate(amountCraft,unit_p)));
             }
 
 
         });
     }
 
-    public int calculate() {
-        int amountCraft = Integer.parseInt(amount.getText().toString());
-        int unit_p = Integer.parseInt(unit_price.getText().toString());
+    public int calculate(int amountCraft,int unit_p) {
 
-        int cal = amountCraft * unit_p;
-        return cal;
+
+        int sellingprice = amountCraft * unit_p;
+        return sellingprice;
     }
 
     public  void AddData(){

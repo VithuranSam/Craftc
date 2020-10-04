@@ -77,7 +77,10 @@ public class MakerActivity extends AppCompatActivity {
                 if (unit_price.getText().toString().length() == 0 ){
                     quantity.setText("0");
                 }
-                buying_price.setText(String.valueOf(calculate()));
+                double qu = Integer.parseInt(quantity.getText().toString());
+                double unit_p = Integer.parseInt(unit_price.getText().toString());
+
+                buying_price.setText(String.valueOf(calculate(qu,unit_p)));
             }
 
 
@@ -85,12 +88,9 @@ public class MakerActivity extends AppCompatActivity {
 
     }
 
-    public int calculate() {
-        int qu = Integer.parseInt(quantity.getText().toString());
-        int unit_p = Integer.parseInt(unit_price.getText().toString());
-
-        int cal = qu * unit_p;
-        return cal;
+    public double calculate(double qu, double unit_p) {
+        double buying_price = qu * unit_p;
+        return buying_price;
     }
 
     public void AddData() {

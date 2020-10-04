@@ -74,16 +74,17 @@ public class CraftActivity extends AppCompatActivity {
                 if (cr_selling_price.getText().toString().length() == 0 ){
                     cr_selling_price.setText("0");
                 }
-                profit.setText(String.valueOf(calculate()));
+                int actualPrice = Integer.parseInt(cr_actual_price.getText().toString());
+                int sellingPrice = Integer.parseInt(cr_selling_price.getText().toString());
+                profit.setText(String.valueOf(calculate(sellingPrice,actualPrice)));
             }
 
 
         });
     }
 
-    public int calculate() {
-        int actualPrice = Integer.parseInt(cr_actual_price.getText().toString());
-        int sellingPrice = Integer.parseInt(cr_selling_price.getText().toString());
+    public int calculate(int sellingPrice,int actualPrice) {
+
 
         int profit = sellingPrice - actualPrice;
         return profit;
