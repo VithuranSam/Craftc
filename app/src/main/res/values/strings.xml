@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">craft creatures</string>
-    <string name="enter_name">Invallid Fotmat</string>
-    <string name="enter_number_">EInvallid Fotmat</string>
-    <string name="enter_number">Invallid Fotmat</string>
-    <string name="jobtitle">Invallid Fotmat</string>
-    <string name="salary">Invallid Fotmat</string>
-    <string name="email">Invallid Fotmat</string>
+    <string name="enter_name">Enter Name</string>
+    <string name="enter_number_">Enter Number</string>
+    <string name="enter_number">Enter Contact Number</string>
+    <string name="jobtitle">Job Title</string>
+    <string name="salary">Salary</string>
+    <string name="email">Email Address</string>
     <string name="err_name" >Invallid Fotmat</string>
     <string name="err_tel" >Invallid Fotmat</string>
     <string name="err_email" >Invallid Fotmat</string>
@@ -23,4 +23,6 @@
     <string name="err_des">Invallid Fotmat</string>
     <string name="err_amou">Invallid Fotmat</string>
     <string name="bSalary">Invallid Fotmat</string>
+    <string name="err_emp">Invalid Input</string>
+    <string name="err_maker">Invalid Input</string>
 </resources>

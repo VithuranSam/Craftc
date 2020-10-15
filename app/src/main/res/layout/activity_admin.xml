@@ -7,6 +7,19 @@
     android:background="@drawable/bg"
     tools:context=".Admin">
 
+    <Button
+        android:id="@+id/logout_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="300dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/input_design"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:text="Logout"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginTop="10dp"
+        />
     <ImageView
         android:id="@+id/main_logo"
         android:layout_width="150dp"

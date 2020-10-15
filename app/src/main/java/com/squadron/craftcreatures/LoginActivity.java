@@ -37,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
                     Intent adm=new Intent(LoginActivity.this,Admin.class);
                     startActivity(adm);
                     Toast.makeText(getApplicationContext(), "Log in Sucessfully", Toast.LENGTH_SHORT).show();
+                    clearControls();
                 } else {
                     Toast.makeText(getApplicationContext(),"Invalid Login",Toast.LENGTH_LONG).show();
 
@@ -50,5 +51,10 @@ public class LoginActivity extends AppCompatActivity {
     protected  void createDatabase()
     {
         sqLiteDatabase = openOrCreateDatabase("craftcreatures", Context.MODE_PRIVATE,null);
+    }
+
+    private void clearControls(){
+        a_name.setText("");
+        a_pass.setText("");
     }
 }

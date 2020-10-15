@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.squadron.craftcreatures.Crafts.CraftActivity;
@@ -18,6 +19,7 @@ public class Admin extends AppCompatActivity {
     LinearLayout crafts;
     LinearLayout delivery;
     LinearLayout maker;
+    Button logout;
 
 
     @Override
@@ -58,6 +60,15 @@ public class Admin extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), MakerActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        logout = (Button) findViewById(R.id.logout_button);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
             }
         });

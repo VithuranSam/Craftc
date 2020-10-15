@@ -15,10 +15,14 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.squadron.craftcreatures.Crafts.CraftActivity;
 import com.squadron.craftcreatures.R;
 
 import java.util.ArrayList;
+
+import static com.basgeekball.awesomevalidation.ValidationStyle.BASIC;
 
 public class EmployeeActivity extends AppCompatActivity {
 
@@ -27,6 +31,7 @@ public class EmployeeActivity extends AppCompatActivity {
     private SqliteDatabase mDatabase;
     private ArrayList<emp> allemp=new ArrayList<>();
     private empAdapter mAdapter;
+    AwesomeValidation awesomeValidation;
 
     public int my_sal = 0;
 
@@ -42,6 +47,7 @@ public class EmployeeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employee);
+        awesomeValidation = new AwesomeValidation(BASIC);
 
         FrameLayout fLayout = (FrameLayout) findViewById(R.id.activity_to_do);
 
@@ -51,6 +57,12 @@ public class EmployeeActivity extends AppCompatActivity {
         empView.setHasFixedSize(true);
         mDatabase = new SqliteDatabase(this);
         allemp = mDatabase.listemp();
+
+        awesomeValidation.addValidation(EmployeeActivity.this, R.id.enter_name, "^[a-zA-Z]{5,30}$+", R.string.err_emp);
+        awesomeValidation.addValidation(EmployeeActivity.this, R.id.salary, "^[0-9]{1,20}$+", R.string.err_emp);
+        awesomeValidation.addValidation(EmployeeActivity.this, R.id.jobtitle, "^[a-zA-Z]{5,30}$+", R.string.err_emp);
+        awesomeValidation.addValidation(EmployeeActivity.this, R.id.enter_phno, "^[0-9]{10}$+", R.string.err_emp);
+        awesomeValidation.addValidation(EmployeeActivity.this, R.id.email, "^[0-9]{1,20}$+", R.string.err_emp);
 
         if(allemp.size() > 0){
             empView.setVisibility(View.VISIBLE);
