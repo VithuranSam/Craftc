@@ -6,7 +6,6 @@
     <string name="jobtitle">Job Title</string>
     <string name="salary">Enter Basic Salary</string>
     <string name="email">Enter Email</string>
-<<<<<<< HEAD
     <string name="err_name" >Enter Valid Name</string>
     <string name="err_tel" >Enter Valid Contact Number</string>
     <string name="err_email" >Enter Valid Email</string>
@@ -23,8 +22,5 @@
     <string name="err_cat">Requireed</string>
     <string name="err_des">Requireed</string>
     <string name="err_amou">Reqired</string>
-
-=======
     <string name="bSalary">Basic Salary</string>
->>>>>>> a367706fc9a968dcae813dbe5b51468f7001ca9a
 </resources>

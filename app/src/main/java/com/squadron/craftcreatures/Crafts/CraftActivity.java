@@ -84,7 +84,7 @@ public class CraftActivity extends AppCompatActivity {
         });
     }
 
-    public int calculate(int sellingPrice,int actualPrice) {
+    public static int calculate(int sellingPrice,int actualPrice) {
 
 
         int profit = sellingPrice - actualPrice;

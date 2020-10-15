@@ -85,7 +85,7 @@ public class DeliveryActivity extends AppCompatActivity {
         });
     }
 
-    public int calculate(int amountCraft,int unit_p) {
+    public static int calculate(int amountCraft,int unit_p) {
         int sellingprice = amountCraft * unit_p;
         return sellingprice;
     }

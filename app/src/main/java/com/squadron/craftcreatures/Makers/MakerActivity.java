@@ -84,7 +84,7 @@ public class MakerActivity extends AppCompatActivity {
 
     }
 
-    public double calculate(double qu, double unit_p) {
+    public static double calculate(double qu, double unit_p) {
         double buying_price = qu * unit_p;
         return buying_price;
     }
