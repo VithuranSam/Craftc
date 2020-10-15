@@ -13,13 +13,12 @@ import static org.junit.Assert.*;
  */
 public class ExampleUnitTest {
     @Test
-    public void addition_isCorrect() {
-        assertEquals(4, 2 + 2);
-    }
-
     public void cal_tax_test(){
         int result = EmployeeActivity.cal_tax(200000);
         assertEquals( 190000,result);
+
+        int result2 = EmployeeActivity.cal_tax(100000);
+        assertEquals( 100000,result2);
     }
 
 
