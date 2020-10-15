@@ -31,8 +31,8 @@ public class ExampleUnitTest {
     //Maker
     @Test
     public void MakerCalculation_isCorrect(){
-        double buying = makerActivity.calculate(20,20);
-        assertEquals(400,buying,0.001);
+        double buying = makerActivity.calculate(30,20);
+        assertEquals(600,buying,0.001);
     }
 
     @Test
@@ -67,6 +67,8 @@ public class ExampleUnitTest {
         assertEquals(3000, crashselling, 0.001);
     }
 
+
+    //Employee
     @Test
     public void cal_tax_test(){
         int result = EmployeeActivity.cal_tax(200000);

@@ -7,6 +7,7 @@ import android.app.AlertDialog;
 import android.database.Cursor;
 import android.os.Bundle;
 
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -48,12 +49,12 @@ public class MakerActivity extends AppCompatActivity {
         cal = (Button)findViewById(R.id.maker_cal_total);
         search = (Button)findViewById(R.id.maker_search_view);
 
-        awesomeValidation.addValidation(MakerActivity.this, R.id.maker_input_name, "[a-zA-Z\\s]+", R.string.err_name);
-        awesomeValidation.addValidation(MakerActivity.this, R.id.maker_input_phone, "^[0-9]{1,10}$", R.string.err_tel);
+        awesomeValidation.addValidation(MakerActivity.this, R.id.maker_input_name, "^[a-zA-Z]{5,30}$+", R.string.err_name);
+        awesomeValidation.addValidation(MakerActivity.this, R.id.maker_input_phone,  "^[0-9]{1,10}$", R.string.err_tel);
         awesomeValidation.addValidation(MakerActivity.this, R.id.maker_input_email, android.util.Patterns.EMAIL_ADDRESS, R.string.err_email);
-        awesomeValidation.addValidation(MakerActivity.this, R.id.maker_input_quantity, RegexTemplate.NOT_EMPTY, R.string.err_qu);
-        awesomeValidation.addValidation(MakerActivity.this, R.id.maker_input_unit_price, RegexTemplate.NOT_EMPTY, R.string.err_unip);
-        awesomeValidation.addValidation(MakerActivity.this, R.id.maker_input_buying_price, RegexTemplate.NOT_EMPTY, R.string.err_buy);
+        awesomeValidation.addValidation(MakerActivity.this, R.id.maker_input_quantity,"^[1-9]{1,30}$+", R.string.err_qu);
+        awesomeValidation.addValidation(MakerActivity.this, R.id.maker_input_unit_price, "^[1-9]{1,30}$+", R.string.err_unip);
+        awesomeValidation.addValidation(MakerActivity.this, R.id.maker_input_buying_price, "^[1-9]{1,30}$+", R.string.err_buy);
 
         AddData();
         ViewAll();

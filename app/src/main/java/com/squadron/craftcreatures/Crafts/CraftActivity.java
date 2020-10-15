@@ -15,8 +15,6 @@ import android.widget.Toast;
 
 
 import com.basgeekball.awesomevalidation.AwesomeValidation;
-import com.basgeekball.awesomevalidation.utility.RegexTemplate;
-import com.google.common.collect.Range;
 import com.squadron.craftcreatures.R;
 
 import static com.basgeekball.awesomevalidation.ValidationStyle.BASIC;
@@ -57,13 +55,12 @@ public class CraftActivity extends AppCompatActivity {
         DeleteData();
         SearchData();
 
-        awesomeValidation.addValidation(CraftActivity.this, R.id.craft_input_crname, "[a-zA-Z\\s]+", R.string.err_name);
-        awesomeValidation.addValidation(CraftActivity.this, R.id.craft_input_actual_price, Range.closed(1,1000), R.string.err_ap);
-        awesomeValidation.addValidation(CraftActivity.this, R.id.craft_input_selling_price, Range.closed(1,1000), R.string.err_sp);
-        awesomeValidation.addValidation(CraftActivity.this, R.id.craft_input_profit, Range.closed(1,1000), R.string.err_prof);
-        awesomeValidation.addValidation(CraftActivity.this, R.id.craft_input_stock, Range.closed(1,1000), R.string.err_sto);
-        awesomeValidation.addValidation(CraftActivity.this, R.id.craft_input_category, RegexTemplate.NOT_EMPTY, R.string.err_cat);
-        awesomeValidation.addValidation(CraftActivity.this, R.id.craft_input_description, RegexTemplate.NOT_EMPTY, R.string.err_des);
+        awesomeValidation.addValidation(CraftActivity.this, R.id.craft_input_crname, "^[a-zA-Z]{5,30}$+", R.string.err_name);
+        awesomeValidation.addValidation(CraftActivity.this, R.id.craft_input_actual_price, "^[0-9]{1,20}$+", R.string.err_ap);
+        awesomeValidation.addValidation(CraftActivity.this, R.id.craft_input_selling_price, "^[0-9]{1,20}$+", R.string.err_sp);
+        awesomeValidation.addValidation(CraftActivity.this, R.id.craft_input_profit, "^[0-9]{1,20}$+", R.string.err_prof);
+        awesomeValidation.addValidation(CraftActivity.this, R.id.craft_input_stock, "^[0-9]{1,20}$+", R.string.err_sto);
+        awesomeValidation.addValidation(CraftActivity.this, R.id.craft_input_category, "^[a-zA-Z]{5,100}$+", R.string.err_cat);
 
         cal_craft.setOnClickListener(new View.OnClickListener() {
             @Override

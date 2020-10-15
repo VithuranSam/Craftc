@@ -53,13 +53,15 @@ public class DeliveryActivity extends AppCompatActivity {
         delivery_view = (Button)findViewById((R.id.delivery_view_button));
         search = (Button)findViewById((R.id.delivery_search_view));
         cal = (Button)findViewById((R.id.delivery_cal_total));
-        awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_name, "[a-zA-Z\\s]+", R.string.err_name);
-        awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_amount, Range.closed(1,1000),R.string.err_amou);
-        awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_unit_price,  Range.closed(1,1000), R.string.err_unip);
-        awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_total_selling_price,  Range.closed(1,10000), R.string.err_sell);
-        awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_caddress, RegexTemplate.NOT_EMPTY, R.string.err_addre);
+
+        awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_name, "^[a-zA-Z]{5,30}$+", R.string.err_name);
+        awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_amount, "^[1-9]{1,30}$+",R.string.err_amou);
+        awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_unit_price,  "^[1-9]{1,30}$+", R.string.err_unip);
+        awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_total_selling_price,  "^[1-9]{1,30}$+", R.string.err_sell);
+        awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_caddress, "^[a-zA-Z]{5,30}$+", R.string.err_addre);
         awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_cphone,"^[0-9]{1,10}$", R.string.err_tel);
-        awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_cname, "[a-zA-Z\\s]+", R.string.err_cname);
+        awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_cname, "^[a-zA-Z]{5,30}$+", R.string.err_cname);
+
         AddData();
         ViewAll();
         UpdateData();
