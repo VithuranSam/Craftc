@@ -5,14 +5,14 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg"
     android:orientation="vertical"
-    android:padding="8dp">
+    android:padding="5dp">
 
     <ImageView
         android:id="@+id/add_craftimg"
         android:layout_width="300dp"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="110dp"
+        android:layout_marginTop="0dp"
         android:layout_marginRight="40dp"
         android:src="@drawable/addemp"
 
@@ -23,9 +23,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/input_design"
-        android:padding="10dp"
+        android:padding="5dp"
         android:ems="10"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:hint="@string/enter_name"
         android:inputType="textPersonName"
         android:textColor="@color/colorAccent"
@@ -38,51 +38,51 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/input_design"
-        android:padding="10dp"
+        android:padding="5dp"
         android:ems="10"
         android:hint="@string/enter_number"
         android:inputType="phone"
         android:textColor="@color/colorAccent"
         android:textColorHint="@color/colorAccent"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="5dp"/>
 
     <EditText
         android:id="@+id/jobtitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/input_design"
-        android:padding="10dp"
+        android:padding="5dp"
         android:ems="10"
         android:hint="@string/jobtitle"
         android:inputType="textPersonName"
         android:textColor="@color/colorAccent"
         android:textColorHint="@color/colorAccent"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="5dp"/>
 
     <EditText
         android:id="@+id/salary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/input_design"
-        android:padding="10dp"
+        android:padding="5dp"
         android:ems="10"
         android:hint="@string/salary"
         android:inputType="number"
         android:textColor="@color/colorAccent"
         android:textColorHint="@color/colorAccent"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="5dp"/>
 
     <EditText
         android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
+        android:layout_marginTop="5dp"
         android:background="@drawable/input_design"
-        android:padding="10dp"
+        android:ems="10"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
+        android:padding="5dp"
         android:textColor="@color/colorAccent"
-        android:textColorHint="@color/colorAccent"
-        android:layout_marginTop="20dp"/>
+        android:textColorHint="@color/colorAccent" />
 
 </LinearLayout>
