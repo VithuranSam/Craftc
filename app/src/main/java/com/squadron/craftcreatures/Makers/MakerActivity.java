@@ -47,8 +47,9 @@ public class MakerActivity extends AppCompatActivity {
         maker_view = (Button)findViewById((R.id.maker_view_button));
         cal = (Button)findViewById(R.id.maker_cal_total);
         search = (Button)findViewById(R.id.maker_search_view);
+
         awesomeValidation.addValidation(MakerActivity.this, R.id.maker_input_name, "[a-zA-Z\\s]+", R.string.err_name);
-        awesomeValidation.addValidation(MakerActivity.this, R.id.maker_input_phone, RegexTemplate.TELEPHONE, R.string.err_tel);
+        awesomeValidation.addValidation(MakerActivity.this, R.id.maker_input_phone, "^[0-9]{1,10}$", R.string.err_tel);
         awesomeValidation.addValidation(MakerActivity.this, R.id.maker_input_email, android.util.Patterns.EMAIL_ADDRESS, R.string.err_email);
         awesomeValidation.addValidation(MakerActivity.this, R.id.maker_input_quantity, RegexTemplate.NOT_EMPTY, R.string.err_qu);
         awesomeValidation.addValidation(MakerActivity.this, R.id.maker_input_unit_price, RegexTemplate.NOT_EMPTY, R.string.err_unip);

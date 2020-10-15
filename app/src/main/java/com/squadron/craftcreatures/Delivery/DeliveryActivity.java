@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.basgeekball.awesomevalidation.utility.RegexTemplate;
 import com.google.common.collect.Range;
+import com.squadron.craftcreatures.Makers.MakerActivity;
 import com.squadron.craftcreatures.R;
 
 import static com.basgeekball.awesomevalidation.ValidationStyle.BASIC;
@@ -57,7 +58,7 @@ public class DeliveryActivity extends AppCompatActivity {
         awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_unit_price,  Range.closed(1,1000), R.string.err_unip);
         awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_total_selling_price,  Range.closed(1,10000), R.string.err_sell);
         awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_caddress, RegexTemplate.NOT_EMPTY, R.string.err_addre);
-        awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_cphone, RegexTemplate.TELEPHONE, R.string.err_tel);
+        awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_cphone,"^[0-9]{1,10}$", R.string.err_tel);
         awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_cname, "[a-zA-Z\\s]+", R.string.err_cname);
         AddData();
         ViewAll();

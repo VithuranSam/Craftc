@@ -9,10 +9,10 @@
 
     <ImageView
         android:id="@+id/add_craftimg"
-        android:layout_width="250dp"
+        android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="70dp"
-        android:layout_marginTop="1dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="40dp"
         android:layout_marginRight="70dp"
         android:src="@drawable/addemp"
 
@@ -23,6 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:layout_marginTop="80dp"
         android:hint="@string/enter_name"
         android:inputType="textPersonName"
         android:textColor="@color/colorAccent"
@@ -38,7 +39,8 @@
         android:hint="@string/enter_number"
         android:inputType="phone"
         android:textColor="@color/colorAccent"
-        android:textColorHint="@color/colorAccent" />
+        android:textColorHint="@color/colorAccent"
+        android:layout_marginTop="20dp"/>
 
     <EditText
         android:id="@+id/jobtitle"
@@ -48,7 +50,8 @@
         android:hint="@string/jobtitle"
         android:inputType="textPersonName"
         android:textColor="@color/colorAccent"
-        android:textColorHint="@color/colorAccent" />
+        android:textColorHint="@color/colorAccent"
+        android:layout_marginTop="20dp"/>
 
     <EditText
         android:id="@+id/salary"
@@ -58,7 +61,8 @@
         android:hint="@string/salary"
         android:inputType="number"
         android:textColor="@color/colorAccent"
-        android:textColorHint="@color/colorAccent" />
+        android:textColorHint="@color/colorAccent"
+        android:layout_marginTop="20dp"/>
 
     <EditText
         android:id="@+id/email"
@@ -68,6 +72,7 @@
         android:hint="@string/email"
         android:inputType="textEmailAddress"
         android:textColor="@color/colorAccent"
-        android:textColorHint="@color/colorAccent" />
+        android:textColorHint="@color/colorAccent"
+        android:layout_marginTop="20dp"/>
 
 </LinearLayout>
