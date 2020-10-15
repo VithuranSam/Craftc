@@ -1,8 +1,12 @@
 package com.squadron.craftcreatures;
 
+<<<<<<< HEAD
 import com.squadron.craftcreatures.Crafts.CraftActivity;
 import com.squadron.craftcreatures.Delivery.DeliveryActivity;
 import com.squadron.craftcreatures.Makers.MakerActivity;
+=======
+import com.squadron.craftcreatures.Employee.EmployeeActivity;
+>>>>>>> a367706fc9a968dcae813dbe5b51468f7001ca9a
 
 import org.junit.Test;
 
@@ -60,8 +64,19 @@ public class ExampleUnitTest {
         assertEquals(2000,crashselling,0.001);
     }
     @Test
+<<<<<<< HEAD
     public void DeliveyCalculation_isWrong() {
         int crashselling = deliveryActivity.calculate(20, 100);
         assertEquals(3000, crashselling, 0.001);
+=======
+    public void cal_tax_test(){
+        int result = EmployeeActivity.cal_tax(200000);
+        assertEquals( 190000,result);
+
+        int result2 = EmployeeActivity.cal_tax(100000);
+        assertEquals( 100000,result2);
+>>>>>>> a367706fc9a968dcae813dbe5b51468f7001ca9a
     }
+
+
 }

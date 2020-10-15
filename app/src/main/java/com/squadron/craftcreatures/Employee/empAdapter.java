@@ -20,6 +20,8 @@ import com.squadron.craftcreatures.R;
 
 import java.util.ArrayList;
 
+import static com.squadron.craftcreatures.Employee.EmployeeActivity.cal_tax;
+
 public class empAdapter extends RecyclerView.Adapter<empViewHolder> implements Filterable {
 
     private Context context;
@@ -27,6 +29,7 @@ public class empAdapter extends RecyclerView.Adapter<empViewHolder> implements F
     private ArrayList<emp> mArrayList;
 
     private SqliteDatabase mDatabase;
+
 
     public empAdapter(Context context, ArrayList<emp> listemp) {
         this.context = context;
@@ -143,12 +146,13 @@ public class empAdapter extends RecyclerView.Adapter<empViewHolder> implements F
         builder.setPositiveButton("EDIT EMPLOYEE", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                final int sal = Integer.parseInt(salaryField.getText().toString());
+                int salf =  cal_tax(sal);
                 final String name = nameField.getText().toString();
                 final String jobtitle = jobField.getText().toString();
-                final String salary = jobField.getText().toString();
+                final String salary = String.valueOf(salf);
                 final String ph_no = phoneField.getText().toString();
                 final String email = emailField.getText().toString();
-
                 if(TextUtils.isEmpty(name)){
                     Toast.makeText(context, "Something went wrong. Check your input values", Toast.LENGTH_LONG).show();
                 }
@@ -160,7 +164,6 @@ public class empAdapter extends RecyclerView.Adapter<empViewHolder> implements F
                 }
             }
         });
-
         builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
