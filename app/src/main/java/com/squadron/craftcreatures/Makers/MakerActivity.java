@@ -49,12 +49,12 @@ public class MakerActivity extends AppCompatActivity {
         cal = (Button)findViewById(R.id.maker_cal_total);
         search = (Button)findViewById(R.id.maker_search_view);
 
-        awesomeValidation.addValidation(MakerActivity.this, R.id.maker_input_name, "^[a-zA-Z]{5,30}$+", R.string.err_maker);
+        awesomeValidation.addValidation(MakerActivity.this, R.id.maker_input_name, "^[a-zA-Z]{2,30}$+", R.string.err_maker);
         awesomeValidation.addValidation(MakerActivity.this, R.id.maker_input_phone,  "^[0-9]{10}$", R.string.err_maker);
         awesomeValidation.addValidation(MakerActivity.this, R.id.maker_input_email, android.util.Patterns.EMAIL_ADDRESS, R.string.err_maker);
-        awesomeValidation.addValidation(MakerActivity.this, R.id.maker_input_quantity,"^[1-9]{1,30}$+", R.string.err_maker);
-        awesomeValidation.addValidation(MakerActivity.this, R.id.maker_input_unit_price, "^[1-9]{1,30}$+", R.string.err_maker);
-        awesomeValidation.addValidation(MakerActivity.this, R.id.maker_input_buying_price, "^[1-9]{1,30}$+", R.string.err_maker);
+        awesomeValidation.addValidation(MakerActivity.this, R.id.maker_input_quantity,"^[0-9]{1,20}$+", R.string.err_maker);
+        awesomeValidation.addValidation(MakerActivity.this, R.id.maker_input_unit_price, "^[0-9]{1,20}$+", R.string.err_maker);
+        awesomeValidation.addValidation(MakerActivity.this, R.id.maker_input_buying_price, "^[0-9]{1,20}$+", R.string.err_maker);
 
         AddData();
         ViewAll();
