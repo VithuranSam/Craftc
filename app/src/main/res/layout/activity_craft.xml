@@ -20,11 +20,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/input_design_black"
-        android:layout_below="@+id/add_text"
+        android:layout_below="@+id/layout_three"
         android:padding="10dp"
         android:layout_marginLeft="60dp"
         android:layout_marginRight="60dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="30dp"
         android:hint="Craft Name"
         android:inputType="text"
         android:textColor="@color/colorBlack"
@@ -98,8 +98,7 @@
                 android:textColorHint="@color/colorBlack"
                 android:textSize="18sp"
                 android:textStyle="normal"
-                android:orientation="vertical"
-                />
+                android:orientation="vertical"/>
         </LinearLayout>>
         <LinearLayout
             android:layout_width="50dp"
@@ -172,31 +171,13 @@
         android:textStyle="normal"
         />
 
-<!--    <EditText-->
-<!--        android:id="@+id/craft_input_id"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:background="@drawable/input_design_black"-->
-<!--        android:layout_below="@+id/craft_input_description"-->
-<!--        android:padding="10dp"-->
-<!--        android:layout_marginLeft="60dp"-->
-<!--        android:layout_marginRight="60dp"-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        android:hint="Input ID and Edit/Delete"-->
-<!--        android:inputType="text"-->
-<!--        android:textColor="@color/colorBlack"-->
-<!--        android:textColorHint="@color/colorBlack"-->
-<!--        android:textSize="18sp"-->
-<!--        android:textStyle="normal"-->
-<!--        />-->
-
     <LinearLayout
         android:id="@+id/layout_three"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clipToPadding="false"
         android:gravity="center"
-        android:layout_below="@+id/craft_input_description"
+        android:layout_below="@+id/add_text"
         android:layout_marginTop="10dp"
         android:orientation="horizontal">
         <LinearLayout
@@ -244,7 +225,7 @@
         android:layout_height="wrap_content"
         android:clipToPadding="false"
         android:gravity="center"
-        android:layout_below="@+id/layout_three"
+        android:layout_below="@+id/craft_input_description"
         android:layout_marginTop="40dp"
         android:orientation="horizontal">
         <LinearLayout

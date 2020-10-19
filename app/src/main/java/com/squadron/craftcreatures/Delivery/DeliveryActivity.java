@@ -14,8 +14,6 @@ import android.widget.Toast;
 
 import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.basgeekball.awesomevalidation.utility.RegexTemplate;
-import com.google.common.collect.Range;
-import com.squadron.craftcreatures.Makers.MakerActivity;
 import com.squadron.craftcreatures.R;
 
 import static com.basgeekball.awesomevalidation.ValidationStyle.BASIC;
@@ -54,11 +52,11 @@ public class DeliveryActivity extends AppCompatActivity {
         search = (Button)findViewById((R.id.delivery_search_view));
         cal = (Button)findViewById((R.id.delivery_cal_total));
 
-        awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_name, "^[a-zA-Z]{2,30}$+", R.string.err_name);
+        awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_name,  RegexTemplate.NOT_EMPTY, R.string.err_name);
         awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_amount, "^[0-9]{1,20}$+",R.string.err_amou);
         awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_unit_price,  "^[0-9]{1,20}$+", R.string.err_unip);
         awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_total_selling_price,  "^[0-9]{1,20}$+", R.string.err_sell);
-        awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_caddress, "^[a-zA-Z]{5,30}$+", R.string.err_addre);
+        awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_caddress, "^[a-zA-Z\\s]{5,30}$+", R.string.err_addre);
         awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_cphone,"^[0-9]{10}$", R.string.err_tel);
         awesomeValidation.addValidation(DeliveryActivity.this, R.id.delivery_input_cname, "^[a-zA-Z]{2,30}$+", R.string.err_cname);
 

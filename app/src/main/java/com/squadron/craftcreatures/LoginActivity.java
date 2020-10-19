@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
                 String AdminName = a_name.getText().toString().trim();
                 String AdminPassword = a_pass.getText().toString().trim();
 
-                if (AdminName.equals("admin@gmail.com") && AdminPassword.equals("admin")) {
+                if (AdminName.equals("admin") && AdminPassword.equals("admin")) {
                     Intent adm=new Intent(LoginActivity.this,Admin.class);
                     startActivity(adm);
                     Toast.makeText(getApplicationContext(), "Log in Sucessfully", Toast.LENGTH_SHORT).show();

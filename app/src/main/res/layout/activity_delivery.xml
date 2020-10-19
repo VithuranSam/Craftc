@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/input_design"
-        android:layout_below="@+id/add_text"
+        android:layout_below="@+id/layout_three"
         android:padding="10dp"
         android:layout_marginLeft="60dp"
         android:layout_marginRight="60dp"
@@ -179,7 +179,7 @@
         android:layout_height="wrap_content"
         android:clipToPadding="false"
         android:gravity="center"
-        android:layout_below="@+id/delivery_input_cphone"
+        android:layout_below="@+id/add_text"
         android:layout_marginTop="10dp"
         android:orientation="horizontal">
         <LinearLayout
@@ -226,7 +226,7 @@
         android:layout_height="wrap_content"
         android:clipToPadding="false"
         android:gravity="center"
-        android:layout_below="@+id/layout_three"
+        android:layout_below="@+id/delivery_input_cphone"
         android:layout_marginTop="40dp"
         android:orientation="horizontal">
         <LinearLayout

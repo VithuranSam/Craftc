@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 
 import com.basgeekball.awesomevalidation.AwesomeValidation;
+import com.basgeekball.awesomevalidation.utility.RegexTemplate;
 import com.squadron.craftcreatures.R;
 
 import static com.basgeekball.awesomevalidation.ValidationStyle.BASIC;
@@ -55,12 +56,12 @@ public class CraftActivity extends AppCompatActivity {
         DeleteData();
         SearchData();
 
-        awesomeValidation.addValidation(CraftActivity.this, R.id.craft_input_crname, "^[a-zA-Z]{2,30}$+", R.string.err_name);
+        awesomeValidation.addValidation(CraftActivity.this, R.id.craft_input_crname, RegexTemplate.NOT_EMPTY, R.string.err_name);
         awesomeValidation.addValidation(CraftActivity.this, R.id.craft_input_actual_price, "^[0-9]{1,20}$+", R.string.err_ap);
         awesomeValidation.addValidation(CraftActivity.this, R.id.craft_input_selling_price, "^[0-9]{1,20}$+", R.string.err_sp);
         awesomeValidation.addValidation(CraftActivity.this, R.id.craft_input_profit, "^[0-9]{1,20}$+", R.string.err_prof);
         awesomeValidation.addValidation(CraftActivity.this, R.id.craft_input_stock, "^[0-9]{1,20}$+", R.string.err_sto);
-        awesomeValidation.addValidation(CraftActivity.this, R.id.craft_input_category, "^[a-zA-Z]{2,100}$+", R.string.err_cat);
+        awesomeValidation.addValidation(CraftActivity.this, R.id.craft_input_category, "^[a-zA-Z\\s]{2,30}$+", R.string.err_cat);
 
         cal_craft.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -6,8 +6,6 @@ import android.app.AlertDialog;
 
 import android.database.Cursor;
 import android.os.Bundle;
-
-import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -49,7 +47,7 @@ public class MakerActivity extends AppCompatActivity {
         cal = (Button)findViewById(R.id.maker_cal_total);
         search = (Button)findViewById(R.id.maker_search_view);
 
-        awesomeValidation.addValidation(MakerActivity.this, R.id.maker_input_name, "^[a-zA-Z]{2,30}$+", R.string.err_maker);
+        awesomeValidation.addValidation(MakerActivity.this, R.id.maker_input_name,  RegexTemplate.NOT_EMPTY, R.string.err_maker);
         awesomeValidation.addValidation(MakerActivity.this, R.id.maker_input_phone,  "^[0-9]{10}$", R.string.err_maker);
         awesomeValidation.addValidation(MakerActivity.this, R.id.maker_input_email, android.util.Patterns.EMAIL_ADDRESS, R.string.err_maker);
         awesomeValidation.addValidation(MakerActivity.this, R.id.maker_input_quantity,"^[0-9]{1,20}$+", R.string.err_maker);
@@ -74,8 +72,8 @@ public class MakerActivity extends AppCompatActivity {
                 if (unit_price.getText().toString().length() == 0 ){
                     quantity.setText("0");
                 }
-                double qu = Integer.parseInt(quantity.getText().toString());
-                double unit_p = Integer.parseInt(unit_price.getText().toString());
+                int qu = Integer.parseInt(quantity.getText().toString());
+                int unit_p = Integer.parseInt(unit_price.getText().toString());
 
                 buying_price.setText(String.valueOf(calculate(qu,unit_p)));
             }
@@ -85,8 +83,8 @@ public class MakerActivity extends AppCompatActivity {
 
     }
 
-    public static double calculate(double qu, double unit_p) {
-        double buying_price = qu * unit_p;
+    public static int calculate(int qu, int unit_p) {
+       int buying_price = qu * unit_p;
         return buying_price;
     }
 
